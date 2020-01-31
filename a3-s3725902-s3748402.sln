@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "a3-s3725902-s3748402", "a3-s3725902-s3748402\a3-s3725902-s3748402.csproj", "{CE345EDC-6516-4CDF-8045-A9D3ABD335A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionLogic", "TransactionLogic\TransactionLogic.csproj", "{60AAB766-1DB6-45C4-8C80-A64B7CD1A062}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionLogic", "TransactionLogic\TransactionLogic.csproj", "{60AAB766-1DB6-45C4-8C80-A64B7CD1A062}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NwbaAdmin", "NwbaAdmin\NwbaAdmin.csproj", "{7E7BF611-B975-48A8-9AEC-D88D924E3675}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{60AAB766-1DB6-45C4-8C80-A64B7CD1A062}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60AAB766-1DB6-45C4-8C80-A64B7CD1A062}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60AAB766-1DB6-45C4-8C80-A64B7CD1A062}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E7BF611-B975-48A8-9AEC-D88D924E3675}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E7BF611-B975-48A8-9AEC-D88D924E3675}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E7BF611-B975-48A8-9AEC-D88D924E3675}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E7BF611-B975-48A8-9AEC-D88D924E3675}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
