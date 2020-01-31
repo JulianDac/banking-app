@@ -1,0 +1,93 @@
+﻿@model NwbaSystem.ViewModels.TransactionViewModel
+@{
+    ViewData["Title"] = "ATM Page";
+}
+@*method Index() of CustomerController returns this page*@
+@*https://www.aspsnippets.com/Articles/Enable-Disable-TextBox-on-DropDownList-change-selection-using-JavaScript-and-jQuery.aspx*@
+    <div>
+
+        <h3 name="transactionpage" id="transactionpage" style="padding-bottom: 20px; padding-top: 20px; margin-bottom: 20px"> Transaction Details</h3>
+        
+        
+        @*js to disable input based on dropdown list*@
+        <script type="text/javascript">
+            function EnableDisableTextBox(dropDownListModels) {
+                var selectedValue = dropDownListModels.options[dropDownListModels.selectedIndex].value;
+
+                var toAccount = document.getElementById("toAccount");
+                toAccount.disabled = selectedValue == "T" ? false : true;
+                if (!toAccount.disabled) {
+                    toAccount.focus();
+                }
+                if (selectedValue == "D" || selectedValue == "W") {
+                    document.getElementById("dickButt").style.display = 'none';
+                } else {
+                    document.getElementById("dickButt").style.display = 'block';
+                }
+                if (selectedValue == "B") {
+                    window.location.replace("/BillPay");
+                }
+            }
+        </script>
+
+        <form asp-action="Result">
+            <div asp-validation-summary="ModelOnly"></div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="control-label"> Transaction Type </label>
+                    <select asp-for="TransactionType" id="dropDownListModels" onchange="EnableDisableTextBox(this)" class="form-control" name="TransactionType">
+                        <option value="D">Deposit</option>
+                        <option value="W">Withdraw</option>
+                        <option value="T">Transfer</option>
+                        <option value="B">Billpay</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="control-label"> From Account </label>
+                    <select asp-for="FromAccount" class="form-control" name="FromAccount">
+                        @foreach (var account in Model.Customer.Accounts)
+                        {
+                            <option value="@account.AccountNumber">@account.AccountNumber (@account.AccountType)</option>
+                        }
+                    </select>
+                    </div>
+            </div>
+
+            <div class="form-row" id="dickButt">
+                <div class="form-group col-md-6">
+                    <label class="control-label"> To Account </label>
+                    <input asp-for="DestinationAccountNumber" type="text" class="form-control" aria-label="To Account" id="toAccount" disabled="disabled" name="DestinationAccountNumber">
+                    @Html.ValidationMessage("DestinationAccountNumber", new {@style = "color:#c9485b"})
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="control-label"> Amount </label>
+                    <label class="control-label"> $ </label>
+                    <input asp-for="Amount" type="text" class="form-control" aria-label="Amount (to the nearest cent)" name="Amount" maxlength="5">
+                    @Html.ValidationMessage("Amount", new {@style = "color:#c9485b"})
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="control-label"> Comment </label>
+                    <textarea asp-for="Comment" class="form-control" aria-label="With textarea" name="Comment"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group" style="padding-bottom: 20px; padding-top: 20px; margin-bottom: 20px">
+                <input type="submit" value="Execute" class="btn btn-primary" />
+                <input type="reset" value="Cancel" class="btn btn-warning" />
+            </div>
+        </form>
+
+        <script>
+            EnableDisableTextBox(document.getElementById("dropDownListModels"));
+        </script>
+    </div>

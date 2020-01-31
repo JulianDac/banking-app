@@ -1,0 +1,72 @@
+@*
+    ///-----------------------------------------------------------------
+    ///   Raji Rudhrakumar
+    ///   Assignment-2 NWBA Web Application
+    ///   Summer Semester 2020
+    ///   Adapted from Tute lab and modified to suit the requirement
+    ///-----------------------------------------------------------------
+*@
+
+@using Microsoft.AspNetCore.Http
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 navbar-fixed-top">
+        <div class="container">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                <img src="/img/nwba_logo_name.png" height="45" class="d-inline-block align-top" alt="nwba logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav">
+                    @{
+                        var isLoggedIn = Context.Session.GetInt32(nameof(Customer.CustomerID)).HasValue;
+                    }
+                    @if (isLoggedIn)
+                    {
+                        <li class="nav-item">
+                            <span class="nav-link text-dark">
+                                Welcome, @Context.Session.GetString(nameof(Customer.Name))
+                            </span>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" data-toggle="dropdown">Profile</a>
+                            <div class="dropdown-menu">
+                                <a asp-controller="Profile" asp-action="Index" class="dropdown-item text-dark">View Profile</a>
+                                <div class="dropdown-divider"></div>
+                                <a asp-controller="Login" asp-action="PasswordChange" class="dropdown-item text-dark">Change Password</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Login" asp-action="Logout">Logout</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Login" asp-action="Login">Login</a>
+                        </li>
+                    }
+                </ul>
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </li>
+                    @if (isLoggedIn)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Customer" asp-action="Index" >ATM</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Transaction" asp-action="AccountSelection">Transaction History</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="BillPay" asp-action="Index">Bill Pay</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

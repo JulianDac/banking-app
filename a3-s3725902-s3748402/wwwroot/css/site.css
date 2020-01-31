@@ -1,0 +1,134 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+img.d-inline-block.align-top {
+    height: 45px;
+}
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+/* body styles
+-------------------------------------------------- */
+body {
+    margin-bottom: 60px;
+}
+
+.center {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+   
+    bottom: 0;
+    height:50%;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+   
+    white-space:nowrap;
+}
+
+.img-fluid {
+ 
+    height: 50%!important;
+}
+
+/* Disabling button in BillPay Page */
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+    color: darkgray;
+}
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  /* ReSharper disable once RequiresFallbackColor */
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+    /*position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 45px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    white-space: nowrap;
+    background-color: #f5f5f5;
+    line-height: 45px;
+}
+.footer p{
+    margin:0px!important;
+}
+
+/* Make ReSharper ignore .control-label as UnknownCssClass. */
+/* ReSharper disable once DeclarationIsEmpty */
+.control-label { }
+
+/* Make ReSharper ignore .navbar-toggleable-sm as UnknownCssClass. */
+/* ReSharper disable once DeclarationIsEmpty */
+.navbar-toggleable-sm { }
+
+.h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

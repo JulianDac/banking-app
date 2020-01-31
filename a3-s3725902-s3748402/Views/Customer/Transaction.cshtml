@@ -1,0 +1,22 @@
+﻿@*
+    ///-----------------------------------------------------------------
+    ///   Raji Rudhrakumar
+    ///   Assignment-2 NWBA Web Application
+    ///   Summer Semester 2020
+    ///-----------------------------------------------------------------
+*@
+
+@using X.PagedList
+@model IPagedList<Transaction>
+@{
+    ViewData["Title"] = "Transaction History";
+    var customer = (Customer)ViewBag.Customer;
+}
+
+<div>
+    @customer.CustomerID
+</div>
+
+<div>
+    <a asp-action="Index">Back to Account</a>
+</div>

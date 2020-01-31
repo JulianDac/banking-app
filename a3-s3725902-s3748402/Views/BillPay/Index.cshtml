@@ -1,0 +1,102 @@
+﻿@*
+    ///-----------------------------------------------------------------
+    ///   Raji Rudhrakumar
+    ///   Assignment-2 NWBA Web Application
+    ///   Summer Semester 2020
+    ///-----------------------------------------------------------------
+*@
+
+@using System.Collections;
+
+@model List<NwbaSystem.ViewModels.BillPayViewModel>
+
+
+
+@{
+    ViewData["Title"] = "Schedule Payment";
+}
+<p>
+    <a asp-action="Save">Create New</a>
+</p>
+
+@{
+    foreach (var item in Model)
+    {
+        var billPayStatus = item.BillPayStatus;
+        var FailedDate = item.ScheduleDate;
+
+        if ((billPayStatus == BillPayStatus.Failed) && (FailedDate >= DateTime.Today))
+        {
+            <script>
+                window.onload = function () { alert('Bill pay transaction failed!'); }
+            </script>
+        }
+    }
+ }
+   
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Payee
+                </th>
+
+                <th>
+                    Amount
+                </th>
+                <th>
+                    Schedule Date
+                </th>
+                <th>
+                    Period
+                </th>
+                <th>
+                    ModifyDate
+                </th>
+                <th>
+                    Status
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PayeeName)
+                    </td>
+                    <td>
+                        $ @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ScheduleDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Period)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ModifyDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BillPayStatus)
+                    </td>
+                    <td>
+                        @{ var billPayStatus = item.BillPayStatus;}
+
+                        @if (billPayStatus == BillPayStatus.Waiting)
+                        {
+
+                            <a asp-action="Edit" asp-route-id="@item.BillPayID">Edit</a>
+                        }
+                        else
+                        {
+                            <a class="disabled" asp-route-id="@item.BillPayID" contenteditable="false">Edit</a>
+                        }
+                        @*<a asp-action="Edit" id="editButton" asp-route-id="@item.BillPayID">Edit</a>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

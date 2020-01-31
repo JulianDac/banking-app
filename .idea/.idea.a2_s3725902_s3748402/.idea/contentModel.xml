@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Regulus\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Regulus\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_a2_s3725902_s3748402.1155219684.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Regulus\gitgud\a2-s3725902-s3748402" t="IncludeFlat">
+      <e p="a2-s3725902" t="IncludeRecursive">
+        <e p="a2_s3725902_s3748402.csproj" t="IncludeRecursive" />
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="Attributes" t="Include">
+          <e p="AuthorizeCustomer.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="BusinessModels" t="Include">
+          <e p="Account.cs" t="Include" />
+          <e p="CheckAccount.cs" t="Include" />
+          <e p="Customer.cs" t="Include" />
+          <e p="IAccount.cs" t="Include" />
+          <e p="ITransactionHistory.cs" t="Include" />
+          <e p="SavingsAccount.cs" t="Include" />
+          <e p="TransactionHistory.cs" t="Include" />
+        </e>
+        <e p="Controllers" t="Include">
+          <e p="AccountController.cs" t="Include" />
+          <e p="BillPayController.cs" t="Include" />
+          <e p="BillPayProcessController.cs" t="Include" />
+          <e p="CustomerController.cs" t="Include" />
+          <e p="HomeController.cs" t="Include" />
+          <e p="LoginController.cs" t="Include" />
+          <e p="ProfileController.cs" t="Include" />
+          <e p="TransactionController.cs" t="Include" />
+        </e>
+        <e p="Data" t="Include">
+          <e p="NwbaContext.cs" t="Include" />
+          <e p="SeedData.cs" t="Include" />
+        </e>
+        <e p="Migrations" t="Include">
+          <e p="20200128095607_Initial.cs" t="Include" />
+          <e p="20200128095607_Initial.Designer.cs" t="Include" />
+          <e p="20200129050219_Tes.cs" t="Include" />
+          <e p="20200129050219_Tes.Designer.cs" t="Include" />
+          <e p="NwbaContextModelSnapshot.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="Account.cs" t="Include" />
+          <e p="Address.cs" t="Include" />
+          <e p="BillPay.cs" t="Include" />
+          <e p="Customer.cs" t="Include" />
+          <e p="Login.cs" t="Include" />
+          <e p="Payee.cs" t="Include" />
+          <e p="RequiredAttribute.cs" t="Include" />
+          <e p="Transaction.cs" t="Include" />
+        </e>
+        <e p="NwbaSystem-del" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="a2_s3725902_s3748402.AssemblyInfo.cs" t="Include" />
+              <e p="a2_s3725902_s3748402.RazorAssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="ReadMe.txt" t="Include" />
+        <e p="Startup.cs" t="Include" />
+        <e p="Utilities" t="Include">
+          <e p="BusinessProcess.cs" t="Include" />
+          <e p="MiscellaneousExtensionUtilities.cs" t="Include" />
+          <e p="TimedHostedService.cs" t="Include" />
+        </e>
+        <e p="ViewModels" t="Include">
+          <e p="AccountViewModel.cs" t="Include" />
+          <e p="BillPayViewModel.cs" t="Include" />
+          <e p="CustomerViewModel.cs" t="Include" />
+          <e p="ErrorViewModel.cs" t="Include" />
+          <e p="LoginViewModel.cs" t="Include" />
+          <e p="ProfileViewModel.cs" t="Include" />
+          <e p="TransactionViewModel.cs" t="Include" />
+        </e>
+        <e p="Views" t="Include">
+          <e p="_ViewImports.cshtml" t="Include" />
+          <e p="_ViewStart.cshtml" t="Include" />
+          <e p="BillPay" t="Include">
+            <e p="Edit.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+            <e p="Save.cshtml" t="Include" />
+          </e>
+          <e p="BillPayProcess" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Customer" t="Include">
+            <e p="Deposit.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+            <e p="Result.cshtml" t="Include" />
+            <e p="Transaction.cshtml" t="Include" />
+          </e>
+          <e p="Home" t="Include">
+            <e p="Index.cshtml" t="Include" />
+            <e p="Privacy.cshtml" t="Include" />
+          </e>
+          <e p="Login" t="Include">
+            <e p="Login.cshtml" t="Include" />
+            <e p="PasswordChange.cshtml" t="Include" />
+          </e>
+          <e p="Profile" t="Include">
+            <e p="Edit.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Shared" t="Include">
+            <e p="_Footer.cshtml" t="Include" />
+            <e p="_HeaderNavBar.cshtml" t="Include" />
+            <e p="_Layout.cshtml" t="Include" />
+            <e p="_ValidationScriptsPartial.cshtml" t="Include" />
+            <e p="Error.cshtml" t="Include" />
+          </e>
+          <e p="Transaction" t="Include">
+            <e p="AccountSelection.cshtml" t="Include" />
+          </e>
+        </e>
+        <e p="wwwroot" t="Include">
+          <e p="css" t="Include">
+            <e p="site.css" t="Include" />
+          </e>
+          <e p="favicon.ico" t="Include" />
+          <e p="img" t="Include">
+            <e p="bank.jpg" t="Include" />
+            <e p="nwba_logo.png" t="Include" />
+            <e p="nwba_logo_name.png" t="Include" />
+            <e p="nwba_name.png" t="Include" />
+          </e>
+          <e p="js" t="Include">
+            <e p="site.js" t="Include" />
+          </e>
+          <e p="lib" t="Include">
+            <e p="bootstrap" t="Include">
+              <e p="dist" t="Include">
+                <e p="css" t="Include">
+                  <e p="bootstrap-grid.css" t="Include" />
+                  <e p="bootstrap-grid.css.map" t="Include" />
+                  <e p="bootstrap-grid.min.css" t="Include" />
+                  <e p="bootstrap-grid.min.css.map" t="Include" />
+                  <e p="bootstrap-reboot.css" t="Include" />
+                  <e p="bootstrap-reboot.css.map" t="Include" />
+                  <e p="bootstrap-reboot.min.css" t="Include" />
+                  <e p="bootstrap-reboot.min.css.map" t="Include" />
+                  <e p="bootstrap.css" t="Include" />
+                  <e p="bootstrap.css.map" t="Include" />
+                  <e p="bootstrap.min.css" t="Include" />
+                  <e p="bootstrap.min.css.map" t="Include" />
+                </e>
+                <e p="js" t="Include">
+                  <e p="bootstrap.bundle.js" t="Include" />
+                  <e p="bootstrap.bundle.js.map" t="Include" />
+                  <e p="bootstrap.bundle.min.js" t="Include" />
+                  <e p="bootstrap.bundle.min.js.map" t="Include" />
+                  <e p="bootstrap.js" t="Include" />
+                  <e p="bootstrap.js.map" t="Include" />
+                  <e p="bootstrap.min.js" t="Include" />
+                  <e p="bootstrap.min.js.map" t="Include" />
+                </e>
+              </e>
+              <e p="LICENSE" t="Include" />
+            </e>
+            <e p="jquery" t="Include">
+              <e p="dist" t="Include">
+                <e p="jquery.js" t="Include" />
+                <e p="jquery.min.js" t="Include" />
+                <e p="jquery.min.map" t="Include" />
+              </e>
+              <e p="LICENSE.txt" t="Include" />
+            </e>
+            <e p="jquery-validation" t="Include">
+              <e p="dist" t="Include">
+                <e p="additional-methods.js" t="Include" />
+                <e p="additional-methods.min.js" t="Include" />
+                <e p="jquery.validate.js" t="Include" />
+                <e p="jquery.validate.min.js" t="Include" />
+              </e>
+              <e p="LICENSE.md" t="Include" />
+            </e>
+            <e p="jquery-validation-unobtrusive" t="Include">
+              <e p="jquery.validate.unobtrusive.js" t="Include" />
+              <e p="jquery.validate.unobtrusive.min.js" t="Include" />
+              <e p="LICENSE.txt" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="a2_s3725902_s3748402.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

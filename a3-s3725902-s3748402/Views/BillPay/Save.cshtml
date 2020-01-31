@@ -1,0 +1,57 @@
+﻿@*
+    ///-----------------------------------------------------------------
+    ///   Raji Rudhrakumar
+    ///   Assignment-2 NWBA Web Application
+    ///   Summer Semester 2020
+    ///-----------------------------------------------------------------
+*@
+
+@model NwbaSystem.ViewModels.BillPayViewModel
+
+
+@{
+    ViewData["Title"] = "Bill Pay";
+}
+<div>
+    <h3>Schedule Payment</h3>
+    <form asp-action="Save">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="AccountNumber">From Account </label>
+                @Html.DropDownListFor(x => Model.SelectedAccount, new SelectList(Model.Accounts, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Country" })
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="PayeeID">To Payee</label>
+                @Html.DropDownListFor(x => Model.SelectedPayee, new SelectList(Model.PayeeList, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Country" })
+
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="Amount"></label>
+                <input type="text" asp-for="Amount" class="form-control">
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="ScheduleDate" class="control-label"></label>
+                <input asp-for="ScheduleDate" class="form-control" />
+                <span asp-validation-for="ScheduleDate" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Period" class="control-label"></label>
+
+                @Html.DropDownListFor(x => Model.SelectedPaymentFrequency, new SelectList(Model.PaymentFrequency, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Country" })
+
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save Changes" class="btn btn-primary" />
+            <input type="submit" value="Cancel" class="btn btn-warning" asp-action="Index" />
+        </div>
+    </form>
+
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
