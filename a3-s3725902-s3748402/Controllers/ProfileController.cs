@@ -66,6 +66,11 @@ namespace NwbaSystem.Controllers
                 ModelState.AddModelError(nameof(viewModel.Tfn), "Invalid TFN");
                 return View(viewModel);
             }
+            if (viewModel.Phone == null)
+            {
+                ModelState.AddModelError(nameof(viewModel.Phone), "Should not be empty");
+                return View(viewModel);
+            }
             if (!viewModel.Phone.IsValidPhone())
             {
                 ModelState.AddModelError(nameof(viewModel.Phone), "Invalid Phone");

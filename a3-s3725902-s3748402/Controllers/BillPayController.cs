@@ -10,14 +10,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using NwbaSystem.Data;
 using NwbaSystem.Models;
 using NwbaSystem.ViewModels;
-using System.Web;
-using System.Text;
 
 
 namespace NwbaSystem.Controllers
@@ -120,6 +117,20 @@ namespace NwbaSystem.Controllers
         [HttpPost]
         public async Task<IActionResult> Save(BillPayViewModel viewModel)
         {
+            BillPayViewModel bpmvModel = await BuildBillPayViewModel();
+
+            if (viewModel.Amount.Equals(0))
+            {
+                ModelState.AddModelError(nameof(viewModel.Amount), "Invalid amount");
+                return View(bpmvModel);
+            }
+
+            if (viewModel.ScheduleDate < DateTime.Today)
+            {
+                ModelState.AddModelError(nameof(viewModel.ScheduleDate), "Invalid date");
+                return View(bpmvModel);
+            }
+
             var billPay = new BillPay();
             billPay.AccountNumber = Convert.ToInt32(viewModel.SelectedAccount);
             billPay.PayeeID = Convert.ToInt32(viewModel.SelectedPayee);
@@ -135,6 +146,54 @@ namespace NwbaSystem.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
+            BillPayViewModel bpmvModel = await BuildBillPayViewModel();
+
+            var currentSchedule = _context.BillPays.FirstOrDefault(x => x.BillPayID == id);
+
+            bpmvModel.Amount = currentSchedule.Amount;
+            bpmvModel.ScheduleDate = currentSchedule.ScheduleDate;
+            bpmvModel.SelectedPaymentFrequency = currentSchedule.Period;
+            bpmvModel.SelectedPayee = currentSchedule.PayeeID.ToString();
+            bpmvModel.BillPayID = currentSchedule.BillPayID;
+            bpmvModel.BillPayStatus = currentSchedule.BillPayStatus;
+
+            return View(bpmvModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(BillPayViewModel viewModel)
+        {
+            var billPay = _context.BillPays.FirstOrDefault(x => x.BillPayID == viewModel.BillPayID);
+
+
+            BillPayViewModel bpmvModel = await BuildBillPayViewModel();
+
+            if (viewModel.Amount.Equals(0))
+            {
+                ModelState.AddModelError(nameof(viewModel.Amount), "Invalid amount");
+                return View(bpmvModel);
+            }
+
+            if (viewModel.ScheduleDate < DateTime.Today)
+            {
+                ModelState.AddModelError(nameof(viewModel.ScheduleDate), "Invalid date");
+                return View(bpmvModel);
+            }
+
+            billPay.AccountNumber = Convert.ToInt32(viewModel.SelectedAccount);
+            billPay.PayeeID = Convert.ToInt32(viewModel.SelectedPayee);
+            billPay.Amount = viewModel.Amount;
+            billPay.ScheduleDate = viewModel.ScheduleDate;
+            billPay.Period = viewModel.SelectedPaymentFrequency;
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private async Task<BillPayViewModel> BuildBillPayViewModel()
+        {
+
+            // Eager loading.
             var customer = await _context.Customers.Include(x => x.Accounts).
                FirstOrDefaultAsync(x => x.CustomerID == customerID);
 
@@ -151,7 +210,6 @@ namespace NwbaSystem.Controllers
             }
 
             var billPayers = _context.Payees.ToList();
-
             List<SelectListItem> payeeList = new List<SelectListItem>();
             foreach (var payee in billPayers)
             {
@@ -165,6 +223,7 @@ namespace NwbaSystem.Controllers
             var model = new BillPayViewModel();
             model.Accounts = accounts;
             model.PayeeList = payeeList;
+            model.ScheduleDate = DateTime.Now;
             model.PaymentFrequency = new List<SelectListItem>()
             {
                 new SelectListItem
@@ -184,33 +243,9 @@ namespace NwbaSystem.Controllers
                     Text = "One Time", Value = "One Time"
                 }
             };
-            var currentSchedule = _context.BillPays.FirstOrDefault(x => x.BillPayID == id);
 
-            model.Amount = currentSchedule.Amount;
-            model.ScheduleDate = currentSchedule.ScheduleDate;
-            model.SelectedPaymentFrequency = currentSchedule.Period;
-            model.SelectedPayee = currentSchedule.PayeeID.ToString();
-            model.BillPayID = currentSchedule.BillPayID;
-            model.BillPayStatus = currentSchedule.BillPayStatus;
-
-            return View(model);
+            return model;
         }
-
-        [HttpPost]
-        public async Task<IActionResult> Edit(BillPayViewModel viewModel)
-        {
-            var billPay = _context.BillPays.FirstOrDefault(x => x.BillPayID == viewModel.BillPayID);
-            billPay.AccountNumber = Convert.ToInt32(viewModel.SelectedAccount);
-            billPay.PayeeID = Convert.ToInt32(viewModel.SelectedPayee);
-            billPay.Amount = viewModel.Amount;
-            billPay.ScheduleDate = viewModel.ScheduleDate;
-            billPay.Period = viewModel.SelectedPaymentFrequency;
-            billPay.ModifyDate = DateTime.Now;
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-
 
     }
 }
