@@ -6,7 +6,10 @@
 ///-----------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +17,9 @@ using NwbaSystem.Data;
 using NwbaSystem.Models;
 using NwbaSystem.ViewModels;
 using SimpleHashing;
+using Microsoft.AspNetCore.Authentication;
+using System.Timers;
+
 
 namespace NwbaSystem.Controllers
 {
@@ -29,7 +35,6 @@ namespace NwbaSystem.Controllers
         [Route("PasswordChange")]
         public async Task<IActionResult> PasswordChange()
         {
-
             return View();
         }
 
@@ -48,7 +53,7 @@ namespace NwbaSystem.Controllers
                 login.ModifyDate = DateTime.Now;
 
                 await _context.SaveChangesAsync();
-                ModelState.AddModelError("PasswordMessage", "Password succesufully updated.");
+                ModelState.AddModelError("PasswordMessage", "Password successfully updated.");
             }
             else
             {
@@ -72,9 +77,11 @@ namespace NwbaSystem.Controllers
             HttpContext.Session.SetInt32(nameof(Customer.CustomerID), login.CustomerID);
             HttpContext.Session.SetString(nameof(Customer.Name), login.Customer.Name);
 
+
             //return RedirectToAction("Index", "Account"); 
             return RedirectToAction("Index", "Customer"); //once logged in, redirect to Controller Customer, action method Index
         }
+        
 
         [Route("LogoutNow")]
         public IActionResult Logout()
@@ -84,5 +91,16 @@ namespace NwbaSystem.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        
+        // public ActionResult SetSession()
+        // {
+        //     return View();
+        // }
+        
+        // public ActionResult Keepalive()
+        // {
+        //     return Json("OK");
+        // }
+        
     }
 }

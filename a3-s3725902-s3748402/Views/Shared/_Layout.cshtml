@@ -7,7 +7,12 @@
     ///-----------------------------------------------------------------
 *@
 
+@*reference:
+http://www.intstrings.com/ramivemula/articles/display-session-expire-popup-in-asp-net-mvc/
+*@
+
 @using Microsoft.AspNetCore.Http
+
 
 
 <!DOCTYPE html>
@@ -34,13 +39,26 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script>
 
-
-    </script>
+   
+    <script>    </script>
     @RenderSection("Scripts", required: false)
 
-
+@* <link href="~/Content/timeout-dialog.css" rel="stylesheet" /> *@
+@* <script src="~/Scripts/timeout-dialog.js"></script> *@
+@* <script> *@
+@*         $(function () { *@
+@*             var fnTimeOut = function () { *@
+@*                 jQuery.timeoutDialog.setupDialogTimer({ *@
+@*                     timeout: 105, *@
+@*                     countdown: 100, *@
+@*                     logout_redirect_url: '@Url.Action("Logout", "Login")', *@
+@*                     keep_alive_url: '@Url.Action("Keepalive", "Login")' *@
+@*                }); *@
+@*             }; *@
+@*             fnTimeOut(); *@
+@*         }); *@
+@*     </script> *@
 
 </body>
 </html>
