@@ -1,0 +1,100 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>NwbaSystem</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\**" />
+    <Compile Remove="ViewModels\**" />
+    <Content Remove="Models\**" />
+    <Content Remove="ViewModels\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <EmbeddedResource Remove="ViewModels\**" />
+    <None Remove="Models\**" />
+    <None Remove="ViewModels\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="a2s3725902\Migrations\20200121231223_updatetbl.cs" />
+    <Compile Remove="a2s3725902\Migrations\20200121231223_updatetbl.Designer.cs" />
+    <Compile Remove="Migrations\20200121235219_updatetbl1.cs" />
+    <Compile Remove="Migrations\20200121235219_updatetbl1.Designer.cs" />
+    <Compile Remove="Migrations\20200122000954_Initial1.cs" />
+    <Compile Remove="Migrations\20200122000954_Initial1.Designer.cs" />
+    <Compile Remove="Migrations\20200122002756_Initial.cs" />
+    <Compile Remove="Migrations\20200122002756_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20200123103124_Initial.cs" />
+    <Compile Remove="Migrations\20200123103124_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20200124043721_Initial-again.cs" />
+    <Compile Remove="Migrations\20200124043721_Initial-again.Designer.cs" />
+    <Compile Remove="Migrations\20200124043831_Initial.cs" />
+    <Compile Remove="Migrations\20200124043831_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20200124044427_Initial.cs" />
+    <Compile Remove="Migrations\20200124044427_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20200124050838_Initial.cs" />
+    <Compile Remove="Migrations\20200124050838_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20200124051346_Initial1.cs" />
+    <Compile Remove="Migrations\20200124051346_Initial1.Designer.cs" />
+    <Compile Remove="Migrations\20200124051521_Initial.cs" />
+    <Compile Remove="Migrations\20200124051521_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20200124120038_Initial.cs" />
+    <Compile Remove="Migrations\20200124120038_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20200124120146_Initial.cs" />
+    <Compile Remove="Migrations\20200124120146_Initial.Designer.cs" />
+   
+    <Compile Remove="Migrations\20200126031415_butt.cs" />
+    <Compile Remove="Migrations\20200126031415_butt.Designer.cs" />
+    <Compile Remove="Migrations\20200126050545_captain.cs" />
+    <Compile Remove="Migrations\20200126050545_captain.Designer.cs" />
+    <Compile Remove="Migrations\20200126050935_thor.cs" />
+    <Compile Remove="Migrations\20200126050935_thor.Designer.cs" />
+    <Compile Remove="Migrations\20200126052147_blackwidow.cs" />
+    <Compile Remove="Migrations\20200126052147_blackwidow.Designer.cs" />
+
+    <Compile Remove="Migrations\20200126052255_blackwidow.cs" />
+    <Compile Remove="Migrations\20200126052255_blackwidow.Designer.cs" />
+    <Compile Remove="Migrations\20200126145046_Loki.cs" />
+    <Compile Remove="Migrations\20200126145046_Loki.Designer.cs" />
+    <Compile Remove="Migrations\20200126150429_odinson.cs" />
+    <Compile Remove="Migrations\20200126150429_odinson.Designer.cs" />
+    <Compile Remove="Migrations\20200127125912_Initial.cs" />
+    <Compile Remove="Migrations\20200127125912_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20200128095607_Initial.cs" />
+    <Compile Remove="Migrations\20200128095607_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20200129050219_Tes.cs" />
+    <Compile Remove="Migrations\20200129050219_Tes.Designer.cs" />
+    <Compile Remove="Migrations\20200130064157_Initial1.cs" />
+    <Compile Remove="Migrations\20200130064157_Initial1.Designer.cs" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Cronos" Version="0.7.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.0" />
+    <PackageReference Include="SimpleHashing" Version="1.0.3.1" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="7.9.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TransactionLogic\TransactionLogic.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Login\Login.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+
+
+</Project>
