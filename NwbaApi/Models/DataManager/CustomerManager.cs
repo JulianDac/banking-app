@@ -25,6 +25,7 @@ namespace NwbaApi.Models.DataManager
         public Address GetAddress(int id)
         {
             var customer = _context.Customers.Include(x => x.Address).FirstOrDefault(x => x.CustomerID == id);
+            customer.Address.Customers = null; // To eliminate possible object cycle error
             return customer.Address;
         }
 
