@@ -20,6 +20,8 @@ namespace NwbaApi.Controllers
             _repo = repo;
         }
 
+        // This api call returns the list of all customers. Address and Account details are not included.
+        // call this api to view all the customers from the admin portal after the admin logged.
         // GET: api/customer
         [HttpGet]
         public IEnumerable<Customer> Get()
@@ -27,25 +29,33 @@ namespace NwbaApi.Controllers
             return _repo.GetAll();
         }
 
-        // Returns particular customer 
+        // This api call returns particular customer along with address detils by passing customer ID
         // GET api/customer/1
         [HttpGet("{id}")]
         public Customer Get(int id)
         {
-            return _repo.Get(id);
+            var customer = _repo.Get(id);
+            var address = _repo.GetAddress(id);
+            customer.Address = address;
+            return customer;
         }
 
-        // Returns particular customer 
-        // GET api/customeraddress/1
-        [Route("address/{id}")]
-        [HttpGet]
-        public Address GetCustomerAddress(int id)
+        // PUT api/customer/1
+        [HttpPut]
+        public void Put([FromBody] Customer customer)
         {
-           var result = _repo.GetAddress(id);
+            _repo.Update(customer.CustomerID, customer);
+        }
 
-            result.Customers = null;
 
-            return result;
+        // This api calls delete customer and the related records from other tables. 
+        // customers.customerID, logins.LoginID, accounts.AccountNumber, addresses.AddressID,transactions.TransactionID
+        // DELETE api/customers/1
+        // [Route("delete/{id}")] // This route is used to check from url
+        [HttpDelete("{id}")]
+        public long Delete(int id)
+        {
+            return _repo.Delete(id);
         }
 
         // POST api/customers
@@ -55,18 +65,5 @@ namespace NwbaApi.Controllers
             _repo.Add(customer);
         }
 
-        // PUT api/movies
-        [HttpPut]
-        public void Put([FromBody] Customer customer)
-        {
-            _repo.Update(customer.CustomerID, customer);
-        }
-
-        // DELETE api/customers/1
-        [HttpDelete("{id}")]
-        public long Delete(int id)
-        {
-            return _repo.Delete(id);
-        }
     }
 }
