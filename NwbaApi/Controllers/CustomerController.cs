@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using NwbaApi.Models;
 using NwbaApi.Models.DataManager;
+using System.Linq;
 
 namespace NwbaApi.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/customers")]
     public class CustomerController : Controller
     {
         private readonly CustomerManager _repo;
@@ -65,14 +62,14 @@ namespace NwbaApi.Controllers
 
 
         // PUT api/customer/1
-        [Route("update/{id}")] // This route is used to check from url
+        [Route("{id}")] // This route is used to check from url
         [HttpPut]
         [ValidateModel]
         //public void Put([FromBody] Customer customer)
         //{
         //    _repo.Update(customer.CustomerID, customer);
         //}
-        public IActionResult Put([FromBody] Customer customer)
+        public IActionResult Put(int id, Customer customer)
         {
             if (customer == null)
             {
@@ -81,23 +78,24 @@ namespace NwbaApi.Controllers
             }
             else
             {
-                var result = _repo.Update(customer.CustomerID, customer);
-                if (result == customer.CustomerID)
-                {
-                    return Ok(result);
-                }
-                else
+                if ( _repo.Get(id) == null)
                 {
                     ModelState.AddModelError("", "Customer not found");
-                    return BadRequest();
+                    return NotFound();
                 }
+
+                var result = _repo.Update(id,customer);
+
+                return Ok();
+
+
             }
         }
 
         // This api calls delete customer and the related records from other tables. 
         // customers.customerID, logins.LoginID, accounts.AccountNumber, addresses.AddressID,transactions.TransactionID
         // DELETE api/customers/1
-        [Route("delete/{id}")] // This route is used to check from url
+        [Route("{id}")] // This route is used to check from url
         [HttpDelete("{id}")]
         [ValidateModel]
         public IActionResult Delete(int id)
@@ -125,10 +123,10 @@ namespace NwbaApi.Controllers
 
         // This api is used to lock the customer account by passing customer ID
         // LOCK api/lock/1
-        [Route("lock/{id}")] 
-        [HttpPut("{id}")]
+        [Route("{id}/lock")] 
+        [HttpPut]
         [ValidateModel]
-        public IActionResult Lock(int id)
+        public IActionResult lockIdentity(int id)
         {
             if (id <= 0)
             {
@@ -150,10 +148,10 @@ namespace NwbaApi.Controllers
             }
         }
 
-        // This api is used to unlock the customer account by passing customer ID
-        // UNLOCK api/unlock/1
-        [Route("unlock/{id}")] 
-        [HttpPut("{id}")]
+         // This api is used to unlock the customer account by passing customer ID
+         // UNLOCK api/unlock/1
+        [Route("{id}/unlock")]
+        [HttpPut]
         [ValidateModel]
         public IActionResult UnLock(int id)
         {

@@ -13,7 +13,8 @@ namespace NwbaApi.Models
 {
     public enum BillPayStatus
     {
-        Waiting = 1,
+        Blocked = 0,
+        ReadyToProcess = 1,
         Success = 2,
         Failed = 3
     }

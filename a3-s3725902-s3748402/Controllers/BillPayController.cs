@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using NwbaSystem.Attributes;
 using NwbaSystem.Data;
 using NwbaSystem.Models;
 using NwbaSystem.ViewModels;
@@ -19,6 +20,7 @@ using NwbaSystem.ViewModels;
 
 namespace NwbaSystem.Controllers
 {
+    //[AuthorizeCustomer]
     public class BillPayController : Controller
     {
         private readonly NwbaContext _context;
@@ -137,7 +139,7 @@ namespace NwbaSystem.Controllers
             billPay.Amount = viewModel.Amount;
             billPay.ScheduleDate = viewModel.ScheduleDate;
             billPay.Period = viewModel.SelectedPaymentFrequency;
-            billPay.BillPayStatus = BillPayStatus.Waiting;
+            billPay.BillPayStatus = BillPayStatus.ReadyToProcess;
 
             _context.BillPays.Add(billPay);
             await _context.SaveChangesAsync();
