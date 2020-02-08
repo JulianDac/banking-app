@@ -39,7 +39,7 @@ namespace NwbaSystem.HostedService
                 if (_context != null)
                 {
                     // var x = _context.Accounts.Count();
-                    var paymentsToProcess = _context.BillPays.Where(x => x.BillPayStatus == BillPayStatus.ReadyToProcess);
+                    var paymentsToProcess = _context.BillPays.Where(x => x.BillPayStatus == BillPayStatus.Waiting);
                     foreach (var paymentToProcess in paymentsToProcess)
                     {
                         switch (paymentToProcess.Period)
@@ -53,7 +53,7 @@ namespace NwbaSystem.HostedService
                                 // schedule next tx
                                 if (paymentToProcess.BillPayStatus == BillPayStatus.Success) {
                                     paymentToProcess.ScheduleDate.AddMonths(1); 
-                                    paymentToProcess.BillPayStatus = BillPayStatus.ReadyToProcess;
+                                    paymentToProcess.BillPayStatus = BillPayStatus.Waiting;
                                 }
                                 break;
                             case "Quarterly":
@@ -63,7 +63,7 @@ namespace NwbaSystem.HostedService
                                 if (paymentToProcess.BillPayStatus == BillPayStatus.Success)
                                 {
                                     paymentToProcess.ScheduleDate.AddMonths(3);
-                                    paymentToProcess.BillPayStatus = BillPayStatus.ReadyToProcess;
+                                    paymentToProcess.BillPayStatus = BillPayStatus.Waiting;
                                 }
                                 break;
                             case "Annually": //purposely schedule for 30s for demostration purposes
@@ -73,7 +73,7 @@ namespace NwbaSystem.HostedService
                                 if (paymentToProcess.BillPayStatus == BillPayStatus.Success)
                                 {
                                     paymentToProcess.ScheduleDate.AddMonths(12);
-                                    paymentToProcess.BillPayStatus = BillPayStatus.ReadyToProcess;
+                                    paymentToProcess.BillPayStatus = BillPayStatus.Waiting;
                                 }
                                 break;
 

@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace NwbaApi.Migrations
+namespace NwbaSystem.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initialD : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -69,6 +69,7 @@ namespace NwbaApi.Migrations
                     LoginID = table.Column<string>(maxLength: 8, nullable: false),
                     CustomerID = table.Column<int>(nullable: false),
                     PasswordHash = table.Column<string>(maxLength: 64, nullable: false),
+                    FailedAttempts = table.Column<int>(nullable: false),
                     LockFlag = table.Column<int>(nullable: false),
                     ModifyDate = table.Column<DateTime>(nullable: false)
                 },

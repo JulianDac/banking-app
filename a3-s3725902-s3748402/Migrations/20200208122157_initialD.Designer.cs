@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NwbaApi.Data;
+using NwbaSystem.Data;
 
-namespace NwbaApi.Migrations
+namespace NwbaSystem.Migrations
 {
     [DbContext(typeof(NwbaContext))]
-    [Migration("20200208043304_Initial")]
-    partial class Initial
+    [Migration("20200208122157_initialD")]
+    partial class initialD
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace NwbaApi.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("NwbaApi.Models.Account", b =>
+            modelBuilder.Entity("NwbaSystem.Models.Account", b =>
                 {
                     b.Property<int>("AccountNumber")
                         .HasColumnType("int");
@@ -57,7 +57,7 @@ namespace NwbaApi.Migrations
                     b.HasCheckConstraint("CH_Account_Balance", "Balance >= 0");
                 });
 
-            modelBuilder.Entity("NwbaApi.Models.Address", b =>
+            modelBuilder.Entity("NwbaSystem.Models.Address", b =>
                 {
                     b.Property<int>("AddressID")
                         .HasColumnType("int");
@@ -88,7 +88,7 @@ namespace NwbaApi.Migrations
                     b.ToTable("Addresses");
                 });
 
-            modelBuilder.Entity("NwbaApi.Models.BillPay", b =>
+            modelBuilder.Entity("NwbaSystem.Models.BillPay", b =>
                 {
                     b.Property<int>("BillPayID")
                         .ValueGeneratedOnAdd()
@@ -124,7 +124,7 @@ namespace NwbaApi.Migrations
                     b.ToTable("BillPays");
                 });
 
-            modelBuilder.Entity("NwbaApi.Models.Customer", b =>
+            modelBuilder.Entity("NwbaSystem.Models.Customer", b =>
                 {
                     b.Property<int>("CustomerID")
                         .HasColumnType("int");
@@ -148,13 +148,16 @@ namespace NwbaApi.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("NwbaApi.Models.Login", b =>
+            modelBuilder.Entity("NwbaSystem.Models.Login", b =>
                 {
                     b.Property<string>("LoginID")
                         .HasColumnType("nvarchar(8)")
                         .HasMaxLength(8);
 
                     b.Property<int>("CustomerID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FailedAttempts")
                         .HasColumnType("int");
 
                     b.Property<int>("LockFlag")
@@ -179,7 +182,7 @@ namespace NwbaApi.Migrations
                     b.HasCheckConstraint("CH_Login_PasswordHash", "len(PasswordHash) = 64");
                 });
 
-            modelBuilder.Entity("NwbaApi.Models.Payee", b =>
+            modelBuilder.Entity("NwbaSystem.Models.Payee", b =>
                 {
                     b.Property<int>("PayeeID")
                         .HasColumnType("int");
@@ -199,7 +202,7 @@ namespace NwbaApi.Migrations
                     b.ToTable("Payees");
                 });
 
-            modelBuilder.Entity("NwbaApi.Models.Transaction", b =>
+            modelBuilder.Entity("NwbaSystem.Models.Transaction", b =>
                 {
                     b.Property<int>("TransactionID")
                         .ValueGeneratedOnAdd()
@@ -237,62 +240,62 @@ namespace NwbaApi.Migrations
                     b.HasCheckConstraint("CH_Transaction_Amount", "Amount > 0");
                 });
 
-            modelBuilder.Entity("NwbaApi.Models.Account", b =>
+            modelBuilder.Entity("NwbaSystem.Models.Account", b =>
                 {
-                    b.HasOne("NwbaApi.Models.BillPay", null)
+                    b.HasOne("NwbaSystem.Models.BillPay", null)
                         .WithMany("Accounts")
                         .HasForeignKey("BillPayID");
 
-                    b.HasOne("NwbaApi.Models.Customer", "Customer")
+                    b.HasOne("NwbaSystem.Models.Customer", "Customer")
                         .WithMany("Accounts")
                         .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NwbaApi.Models.Payee", null)
+                    b.HasOne("NwbaSystem.Models.Payee", null)
                         .WithMany("Accounts")
                         .HasForeignKey("PayeeID");
                 });
 
-            modelBuilder.Entity("NwbaApi.Models.BillPay", b =>
+            modelBuilder.Entity("NwbaSystem.Models.BillPay", b =>
                 {
-                    b.HasOne("NwbaApi.Models.Payee", "Payee")
+                    b.HasOne("NwbaSystem.Models.Payee", "Payee")
                         .WithMany()
                         .HasForeignKey("PayeeID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("NwbaApi.Models.Customer", b =>
+            modelBuilder.Entity("NwbaSystem.Models.Customer", b =>
                 {
-                    b.HasOne("NwbaApi.Models.Address", "Address")
+                    b.HasOne("NwbaSystem.Models.Address", "Address")
                         .WithMany("Customers")
                         .HasForeignKey("AddressID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("NwbaApi.Models.Login", b =>
+            modelBuilder.Entity("NwbaSystem.Models.Login", b =>
                 {
-                    b.HasOne("NwbaApi.Models.Customer", "Customer")
+                    b.HasOne("NwbaSystem.Models.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("NwbaApi.Models.Payee", b =>
+            modelBuilder.Entity("NwbaSystem.Models.Payee", b =>
                 {
-                    b.HasOne("NwbaApi.Models.Address", null)
+                    b.HasOne("NwbaSystem.Models.Address", null)
                         .WithMany("Payees")
                         .HasForeignKey("AddressID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("NwbaApi.Models.Transaction", b =>
+            modelBuilder.Entity("NwbaSystem.Models.Transaction", b =>
                 {
-                    b.HasOne("NwbaApi.Models.Account", "Account")
+                    b.HasOne("NwbaSystem.Models.Account", "Account")
                         .WithMany("Transactions")
                         .HasForeignKey("AccountNumber")
                         .OnDelete(DeleteBehavior.Cascade)

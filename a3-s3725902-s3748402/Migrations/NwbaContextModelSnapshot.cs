@@ -155,6 +155,12 @@ namespace NwbaSystem.Migrations
                     b.Property<int>("CustomerID")
                         .HasColumnType("int");
 
+                    b.Property<int>("FailedAttempts")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LockFlag")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("ModifyDate")
                         .HasColumnType("datetime2");
 
