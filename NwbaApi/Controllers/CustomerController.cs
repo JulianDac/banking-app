@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NwbaApi.Models;
 using NwbaApi.Models.DataManager;
+using System;
 using System.Linq;
 
 namespace NwbaApi.Controllers
@@ -10,13 +11,18 @@ namespace NwbaApi.Controllers
     public class CustomerController : Controller
     {
         private readonly CustomerManager _repo;
-       
 
-        public CustomerController(CustomerManager repo)
+        private readonly TransactionManager _transactionManager;
+
+        public CustomerController(CustomerManager repo, TransactionManager transactionManager)
         {
             _repo = repo;
+            _transactionManager = transactionManager;
         }
 
+
+        #region customer 
+        
         // This api call returns the list of all customers. Address and Account details are not included.
         // call this api to view all the customers from the admin portal after the admin logged.
         // GET: api/customer
@@ -60,15 +66,11 @@ namespace NwbaApi.Controllers
 
         }
 
-
         // PUT api/customer/1
         [Route("{id}")] // This route is used to check from url
         [HttpPut]
         [ValidateModel]
-        //public void Put([FromBody] Customer customer)
-        //{
-        //    _repo.Update(customer.CustomerID, customer);
-        //}
+       
         public IActionResult Put(int id, Customer customer)
         {
             if (customer == null)
@@ -87,8 +89,6 @@ namespace NwbaApi.Controllers
                 var result = _repo.Update(id,customer);
 
                 return Ok();
-
-
             }
         }
 
@@ -119,8 +119,9 @@ namespace NwbaApi.Controllers
                 }
             }
         }
+        #endregion
 
-
+        #region identity
         // This api is used to lock the customer account by passing customer ID
         // LOCK api/lock/1
         [Route("{id}/lock")] 
@@ -174,7 +175,37 @@ namespace NwbaApi.Controllers
                 }
             }
         }
+        #endregion
 
+        #region Transactions
 
+        // Get transaction details for the customer ID  with date filters
+        [HttpGet]
+        [Route("{id}/transactions")]
+        [ValidateModel]
+        public IActionResult GetTransactions(int id, DateTime? from, DateTime? to )
+        {
+            var customer = _repo.Get(id);
+            if (customer != null)
+            {
+                var accounts = _repo.GetAccounts(id);
+                //customer.Address = address;
+
+                if(accounts != null)
+                {
+                    var accountnumbers = accounts.Select(x => x.AccountNumber).ToList();
+
+                  var transactions =  _transactionManager.GetAccountTransactions(accountnumbers,from,to);
+                    return Ok(transactions);
+                }
+                return NotFound();
+            }
+            else
+            {
+                ModelState.AddModelError("", "No customers found");
+                return NotFound();
+            }
+        }
+        #endregion
     }
 }

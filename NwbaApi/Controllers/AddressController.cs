@@ -17,6 +17,7 @@ namespace NwbaApi.Controllers
             _repo = repo;
         }
 
+        // Returns all addresses
         // GET: api/address
         [HttpGet]
         public IEnumerable<Address> Get()
@@ -24,7 +25,7 @@ namespace NwbaApi.Controllers
             return _repo.GetAll();
         }
 
-        // Returns particular customer 
+        // Returns particular address 
         // GET api/address/1
         [HttpGet("{id}")]
         public Address Get(int id)
@@ -32,9 +33,9 @@ namespace NwbaApi.Controllers
             return _repo.Get(id);
         }
 
-        // Returns particular customer 
+        // Returns particular address 
         // GET api/customeraddress/1
-        [Route("address/{id}")]
+        [Route("{id}\address")]
         [HttpGet]
         public Address GetCustomerAddress(int id)
         {

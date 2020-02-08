@@ -22,13 +22,18 @@ namespace NwbaApi.Models.DataManager
             return _context.Customers.Find(id);
         }
 
-        // rreturns address for the customer ID
+        // Returns address for the customer ID
         public Address GetAddress(int id)
         {
-
             var customer = _context.Customers.Include(x => x.Address).FirstOrDefault(x => x.CustomerID == id);
             customer.Address.Customers = null; // To eliminate possible object cycle error
             return customer.Address;
+        }
+
+        public List<Account> GetAccounts(int id)
+        {
+            var customer = _context.Customers.Include(x => x.Accounts).FirstOrDefault(x => x.CustomerID == id);
+            return customer.Accounts;
         }
 
         public IEnumerable<Customer> GetAll()
@@ -51,13 +56,15 @@ namespace NwbaApi.Models.DataManager
             if (c != null)
             {
                 c.Name = customer.Name;
-                //TODO: update the address
-
+                c.Tfn = customer.Tfn;
                 if(customer.Address != null)
                 {
+                    c.Address.Street = customer.Address.Street;
                     c.Address.City = customer.Address.City;
+                    c.Address.State = customer.Address.State;
+                    c.Address.PostCode = customer.Address.PostCode;
+                    c.Address.Phone = customer.Address.Phone;
                 }
-                //_context.Update(customer);
                 _context.SaveChanges();
                 return id;
             }

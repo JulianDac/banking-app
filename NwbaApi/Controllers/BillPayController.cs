@@ -91,6 +91,5 @@ namespace NwbaApi.Controllers
             _repo.UnBlock(id);
             return Ok();
         }
-
     }
 }
