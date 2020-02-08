@@ -6,7 +6,7 @@ namespace NwbaSystem.Web.Helper
 {
     public class NwbaApi
     {
-        private const string ApiBaseUri = "http://localhost:49805"; // use correct port <=== dude
+        private const string ApiBaseUri = "http://localhost:49805"; 
 
         public static HttpClient InitializeClient()
         {

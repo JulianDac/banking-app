@@ -126,7 +126,7 @@ namespace NwbaApi.Controllers
         [Route("{id}/lock")] 
         [HttpPut]
         [ValidateModel]
-        public IActionResult lockIdentity(int id)
+        public IActionResult lockIdentity(int id) 
         {
             if (id <= 0)
             {

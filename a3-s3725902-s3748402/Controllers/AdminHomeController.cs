@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +27,7 @@ namespace NwbaSystem.Controllers
 
         public async Task<IActionResult> UserIndex()
         {
-            var response = await NwbaApi.InitializeClient().GetAsync("api/customer");
+            var response = await NwbaApi.InitializeClient().GetAsync("api/customers");
 
             if (!response.IsSuccessStatusCode)
                 throw new Exception();
@@ -67,6 +68,34 @@ namespace NwbaSystem.Controllers
 
         public IActionResult SCheduledPayIndex()
         {
+
+            return View();
+        }
+
+        //TODO [HttpPost]
+        [Route("AdminHome/Lock/{customerID}")]
+        public async Task<IActionResult> Lock(string customerID)
+        {
+            if (customerID == null)
+                return NotFound();
+            var response = await NwbaApi.InitializeClient().PutAsync("api/customers/"+customerID+"/lock", null);
+
+            if (!response.IsSuccessStatusCode)
+                throw new Exception();
+
+            return View();
+        }
+
+        //TODO [HttpPost]
+        [Route("AdminHome/Unlock/{customerID}")]
+        public async Task<IActionResult> Unlock(string customerID)
+        {
+            if (customerID == null)
+                return NotFound();
+            var response = await NwbaApi.InitializeClient().PutAsync("api/customers/"+customerID+"/unlock", null);
+
+            if (!response.IsSuccessStatusCode)
+                throw new Exception();
 
             return View();
         }

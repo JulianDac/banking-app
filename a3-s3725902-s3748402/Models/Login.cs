@@ -10,6 +10,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace NwbaSystem.Models
 {
+    public enum LockFlag
+    {
+        Unlock = 0,
+        Lock = 1
+    }
+
     public class Login
     {
         [Required, StringLength(8)]
@@ -22,6 +28,10 @@ namespace NwbaSystem.Models
 
         [Required, StringLength(64)]
         public string PasswordHash { get; set; }
+
+        public int FailedAttempts { get; set; }
+
+        public LockFlag LockFlag { get; set; }
 
         public DateTime ModifyDate { get; set; }
     }
