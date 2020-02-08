@@ -26,6 +26,36 @@ namespace NwbaApi.Models.DataManager
             return _context.Logins.ToList();
         }
 
+        public bool Lock(string id)
+        {
+            var login = Get(id);
+            if(login == null)
+            {
+                return false;
+            }
+            else
+            {
+                login.LockFlag = LockFlag.Lock;
+                _context.SaveChanges();
+                return true;
+            } 
+        }
+
+        public bool UnLock(string id)
+        {
+            var login = Get(id);
+            if (login == null)
+            {
+                return false;
+            }
+            else
+            {
+                login.LockFlag = LockFlag.Unlock;
+                _context.SaveChanges();
+                return true;
+            }
+        }
+
         public string Add(Login login)
         {
             _context.Logins.Add(login);

@@ -78,6 +78,44 @@ namespace NwbaApi.Models.DataManager
             }
         }
 
-        
+        /* 
+         * Paas the customer id to lock the account login
+         * returns true if the LockFlag is set to Lock otherwise returns false
+         */
+
+        public bool Lock(int id)
+        {
+            var login = _context.Logins.Include(x => x.Customer).FirstOrDefault(x => x.CustomerID == id);
+            if(login != null)
+            {
+                LoginManager lg = new LoginManager(_context);
+                lg.Lock(login.LoginID);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /* 
+         * Paas the customer id to unlock the account login
+         * returns true if the LockFlag is set to UnLock otherwise returns false
+         */
+        public bool UnLock(int id)
+        {
+            var login = _context.Logins.Include(x => x.Customer).FirstOrDefault(x => x.CustomerID == id);
+            if (login != null)
+            {
+                LoginManager lg = new LoginManager(_context);
+                lg.UnLock(login.LoginID);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }

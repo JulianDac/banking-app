@@ -10,7 +10,7 @@ using NwbaApi.Data;
 namespace NwbaApi.Migrations
 {
     [DbContext(typeof(NwbaContext))]
-    [Migration("20200206101708_Initial")]
+    [Migration("20200208043304_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -155,6 +155,9 @@ namespace NwbaApi.Migrations
                         .HasMaxLength(8);
 
                     b.Property<int>("CustomerID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LockFlag")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ModifyDate")
