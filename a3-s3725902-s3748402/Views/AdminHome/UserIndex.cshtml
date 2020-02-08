@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Customer>
+
+@{
+    ViewData["Title"] = "UserIndex";
+}
+
+<h1>UserIndex</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th> @Html.DisplayNameFor(model => model.CustomerID) </th>
+            <th> @Html.DisplayNameFor(model => model.Name) </th>
+            <th> @Html.DisplayNameFor(model => model.Tfn) </th>
+            <th> @Html.DisplayNameFor(model => model.Address) </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var cust in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(modelCust => cust.CustomerID)</td>
+            <td>@Html.DisplayFor(modelCust => cust.Name)</td>
+            <td>@Html.DisplayFor(modelCust => cust.Tfn)</td>
+            <td>@Html.DisplayFor(modelCust => cust.Address)</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@cust.CustomerID">Edit</a> |
+                <a asp-action="Lock" asp-route-id="@cust.CustomerID">Lock</a> |
+                <a asp-action="Unlock" asp-route-id="@cust.CustomerID">Unlock</a> |
+                <a asp-action="Delete" asp-route-id="@cust.CustomerID">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

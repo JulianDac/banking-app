@@ -147,6 +147,7 @@ namespace NwbaApi.Controllers
                 }
             }
         }
+        
 
          // This api is used to unlock the customer account by passing customer ID
          // UNLOCK api/unlock/1

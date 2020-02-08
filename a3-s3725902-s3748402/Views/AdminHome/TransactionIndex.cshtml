@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Transaction>
+@{
+    ViewData["Title"] = "TransactionIndex";
+}
+
+<h1>TransactionIndex</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th> @Html.DisplayNameFor(model => model.TransactionID) </th>
+            <th> @Html.DisplayNameFor(model => model.TransactionType) </th>
+            <th> @Html.DisplayNameFor(model => model.AccountNumber) </th>
+            <th> @Html.DisplayNameFor(model => model.DestinationAccountNumber) </th>
+            <th> @Html.DisplayNameFor(model => model.Amount) </th>
+            <th> @Html.DisplayNameFor(model => model.TransactionTimeUtc) </th>
+            <th> @Html.DisplayNameFor(model => model.ModifyDate) </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var trans in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(modelCust => trans.TransactionID)</td>
+            <td>@Html.DisplayFor(modelCust => trans.TransactionType)</td>
+            <td>@Html.DisplayFor(modelCust => trans.AccountNumber)</td>
+            <td>@Html.DisplayFor(modelCust => trans.DestinationAccountNumber)</td>
+            <td>@Html.DisplayFor(modelCust => trans.Amount)</td>
+            <td>@Html.DisplayFor(modelCust => trans.ModifyDate)</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@trans.TransactionID">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@trans.TransactionID">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
