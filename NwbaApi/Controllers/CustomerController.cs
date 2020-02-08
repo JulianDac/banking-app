@@ -121,12 +121,5 @@ namespace NwbaApi.Controllers
                 }
             }
         }
-        // POST api/customers
-        [HttpPost]
-        public void Post([FromBody] Customer customer)
-        {
-            _repo.Add(customer);
-        }
-
     }
 }
