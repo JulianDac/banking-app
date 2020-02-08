@@ -71,6 +71,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\BillPay.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\Payee.cs" />
+    <Compile Include="Models\Transaction.cs" />
+    <Compile Include="ViewModels\AccountViewModel.cs" />
+    <Compile Include="ViewModels\BillPayViewModel.cs" />
+    <Compile Include="ViewModels\CustomerViewModel.cs" />
+    <Compile Include="ViewModels\ErrorViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\ProfileViewModel.cs" />
+    <Compile Include="ViewModels\TransactionViewModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Cronos" Version="0.7.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.1" />
@@ -79,13 +96,9 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
     <PackageReference Include="SimpleHashing" Version="1.0.3.1" />
     <PackageReference Include="X.PagedList.Mvc.Core" Version="7.9.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\TransactionLogic\TransactionLogic.csproj" />
   </ItemGroup>
 
   <ItemGroup>
