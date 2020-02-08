@@ -35,12 +35,5 @@ namespace NwbaApi.Controllers
             return _repo.Get(id);
         }
 
-        // POST api/logins
-        [HttpPost]
-        public void Post([FromBody] Login login)
-        {
-            _repo.Add(login);
-        }
-
     }
 }

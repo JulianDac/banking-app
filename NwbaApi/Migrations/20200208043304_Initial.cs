@@ -69,6 +69,7 @@ namespace NwbaApi.Migrations
                     LoginID = table.Column<string>(maxLength: 8, nullable: false),
                     CustomerID = table.Column<int>(nullable: false),
                     PasswordHash = table.Column<string>(maxLength: 64, nullable: false),
+                    LockFlag = table.Column<int>(nullable: false),
                     ModifyDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>

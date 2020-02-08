@@ -126,6 +126,7 @@ namespace NwbaApi.Data
                 LoginID = "12345678",
                 CustomerID = 2100,
                 PasswordHash = "YBNbEL4Lk8yMEWxiKkGBeoILHTU7WZ9n8jJSy8TNx0DAzNEFVsIVNRktiQV+I8d2",
+                LockFlag = LockFlag.Unlock,
                 ModifyDate = DateTime.ParseExact("20/01/2020 09:00:00 PM", format, null)
             },
             new Login
@@ -133,6 +134,7 @@ namespace NwbaApi.Data
                 LoginID = "38074569",
                 CustomerID = 2200,
                 PasswordHash = "EehwB3qMkWImf/fQPlhcka6pBMZBLlPWyiDW6NLkAh4ZFu2KNDQKONxElNsg7V04",
+                LockFlag = LockFlag.Unlock,
                 ModifyDate = DateTime.ParseExact("20/01/2020 09:00:00 PM", format, null)
             },
             new Login
@@ -140,6 +142,7 @@ namespace NwbaApi.Data
                 LoginID = "17963428",
                 CustomerID = 2300,
                 PasswordHash = "LuiVJWbY4A3y1SilhMU5P00K54cGEvClx5Y+xWHq7VpyIUe5fe7m+WeI0iwid7GE",
+                LockFlag = LockFlag.Unlock,
                 ModifyDate = DateTime.ParseExact("20/01/2020 09:30:00 PM", format, null)
             });
 

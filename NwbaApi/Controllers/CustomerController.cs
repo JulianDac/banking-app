@@ -121,5 +121,62 @@ namespace NwbaApi.Controllers
                 }
             }
         }
+
+
+        // This api is used to lock the customer account by passing customer ID
+        // LOCK api/lock/1
+        [Route("lock/{id}")] 
+        [HttpPut("{id}")]
+        [ValidateModel]
+        public IActionResult Lock(int id)
+        {
+            if (id <= 0)
+            {
+                ModelState.AddModelError("", "Invalid customer ID");
+                return BadRequest();
+            }
+            else
+            {
+                var result = _repo.Lock(id);
+                if (result == true)
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Customer not found");
+                    return BadRequest();
+                }
+            }
+        }
+
+        // This api is used to unlock the customer account by passing customer ID
+        // UNLOCK api/unlock/1
+        [Route("unlock/{id}")] 
+        [HttpPut("{id}")]
+        [ValidateModel]
+        public IActionResult UnLock(int id)
+        {
+            if (id <= 0)
+            {
+                ModelState.AddModelError("", "Invalid customer ID");
+                return BadRequest();
+            }
+            else
+            {
+                var result = _repo.UnLock(id);
+                if (result == true)
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Customer not found");
+                    return BadRequest();
+                }
+            }
+        }
+
+
     }
 }
