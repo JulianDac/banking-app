@@ -26,6 +26,7 @@ namespace NwbaApi.Models.DataManager
             return _context.Logins.ToList();
         }
 
+        // This set the LockFlag to lock by passing loginID
         public bool Lock(string id)
         {
             var login = Get(id);
@@ -41,6 +42,7 @@ namespace NwbaApi.Models.DataManager
             } 
         }
 
+        // This set the LockFlag to unlock by passing login ID
         public bool UnLock(string id)
         {
             var login = Get(id);
@@ -56,6 +58,7 @@ namespace NwbaApi.Models.DataManager
             }
         }
 
+      
         public string Add(Login login)
         {
             _context.Logins.Add(login);

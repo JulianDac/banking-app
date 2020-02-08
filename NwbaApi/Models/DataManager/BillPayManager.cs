@@ -50,6 +50,8 @@ namespace NwbaApi.Models.DataManager
             return id;
         }
 
+        // Set the bill pay status to block. Only when status is ReadyToProcess. 
+        // Pass the billpay ID
         public bool Block(int id)
         {
             var billpay = Get(id);
@@ -65,6 +67,8 @@ namespace NwbaApi.Models.DataManager
             }
         }
 
+        // Set the bill pay status to unblock. only when status is Blocked.
+        // Pass the billpay ID
         public bool UnBlock(int id)
         {
             var billpay = Get(id);
