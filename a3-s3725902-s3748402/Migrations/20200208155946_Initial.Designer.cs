@@ -10,8 +10,8 @@ using NwbaSystem.Data;
 namespace NwbaSystem.Migrations
 {
     [DbContext(typeof(NwbaContext))]
-    [Migration("20200208122157_initialD")]
-    partial class initialD
+    [Migration("20200208155946_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

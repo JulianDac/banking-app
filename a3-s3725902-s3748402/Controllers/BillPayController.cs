@@ -139,7 +139,7 @@ namespace NwbaSystem.Controllers
             billPay.Amount = viewModel.Amount;
             billPay.ScheduleDate = viewModel.ScheduleDate;
             billPay.Period = viewModel.SelectedPaymentFrequency;
-            billPay.BillPayStatus = BillPayStatus.Waiting;
+            billPay.BillPayStatus = BillPayStatus.ReadyToProcess;
 
             _context.BillPays.Add(billPay);
             await _context.SaveChangesAsync();

@@ -30,10 +30,16 @@ namespace NwbaApi.Models.DataManager
             return customer.Address;
         }
 
+        // Retruns all the accounts for the customer ID
         public List<Account> GetAccounts(int id)
         {
             var customer = _context.Customers.Include(x => x.Accounts).FirstOrDefault(x => x.CustomerID == id);
-            return customer.Accounts;
+            var accounts = customer.Accounts;
+            foreach (var acc in accounts)
+            {
+                acc.Customer = null;
+            }
+            return accounts;
         }
 
         public IEnumerable<Customer> GetAll()

@@ -67,6 +67,10 @@
     <Compile Remove="Migrations\20200129050219_Tes.Designer.cs" />
     <Compile Remove="Migrations\20200130064157_Initial1.cs" />
     <Compile Remove="Migrations\20200130064157_Initial1.Designer.cs" />
+    <Compile Remove="Migrations\20200208122157_initialD.cs" />
+    <Compile Remove="Migrations\20200208122157_initialD.Designer.cs" />
+    <Compile Remove="Migrations\20200208154943_UpdateDB.cs" />
+    <Compile Remove="Migrations\20200208154943_UpdateDB.Designer.cs" />
 
   </ItemGroup>
 

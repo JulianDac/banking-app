@@ -56,6 +56,8 @@ namespace NwbaApi.Controllers
             {
                 var address = _repo.GetAddress(id);
                 customer.Address = address;
+                var accounts = _repo.GetAccounts(id);
+                customer.Accounts = accounts;
                 return Ok(customer);
             }
             else
