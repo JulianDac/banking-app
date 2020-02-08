@@ -43,6 +43,8 @@ namespace NwbaApi
 
             services.AddTransient<CustomerManager>();
             services.AddTransient<AddressManager>();
+            services.AddTransient<BillPayManager>();
+            services.AddTransient<LoginManager>();
             services.AddControllers();
         }
 

@@ -25,7 +25,7 @@ namespace NwbaApi.Models
         [StringLength(20)]
         public string State { get; set; }
 
-        [StringLength(4)]
+       // [StringLength(4)]
         public int PostCode { get; set; }
 
         [StringLength(15)]

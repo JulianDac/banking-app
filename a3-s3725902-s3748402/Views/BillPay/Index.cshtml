@@ -85,7 +85,7 @@
                     <td>
                         @{ var billPayStatus = item.BillPayStatus;}
 
-                        @if (billPayStatus == BillPayStatus.Waiting)
+                        @if (billPayStatus == BillPayStatus.ReadyToProcess)
                         {
 
                             <a asp-action="Edit" asp-route-id="@item.BillPayID">Edit</a>
@@ -94,7 +94,6 @@
                         {
                             <a class="disabled" asp-route-id="@item.BillPayID" contenteditable="false">Edit</a>
                         }
-                        @*<a asp-action="Edit" id="editButton" asp-route-id="@item.BillPayID">Edit</a>*@
                     </td>
                 </tr>
             }

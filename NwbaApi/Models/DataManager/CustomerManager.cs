@@ -47,10 +47,17 @@ namespace NwbaApi.Models.DataManager
         // else return -1 for failure 
         public int Update(int id, Customer customer)
         {
-            var c = Get(id);
-            if(c != null)
+            var c = _context.Customers.Include(x => x.Address).FirstOrDefault(x => x.CustomerID == id);
+            if (c != null)
             {
-                _context.Update(customer);
+                c.Name = customer.Name;
+                //TODO: update the address
+
+                if(customer.Address != null)
+                {
+                    c.Address.City = customer.Address.City;
+                }
+                //_context.Update(customer);
                 _context.SaveChanges();
                 return id;
             }
@@ -58,7 +65,6 @@ namespace NwbaApi.Models.DataManager
             {
                 return -1;
             }
-            
         }
 
         // This method find the customer, if exists delete the customer and returns customer id 
@@ -116,6 +122,5 @@ namespace NwbaApi.Models.DataManager
                 return false;
             }
         }
-
     }
 }

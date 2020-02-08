@@ -33,7 +33,7 @@ namespace NwbaSystem.Controllers
         public IActionResult Login() => View();
 
         [Route("PasswordChange")]
-        public async Task<IActionResult> PasswordChange()
+        public IActionResult PasswordChange()
         {
             return View();
         }
