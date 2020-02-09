@@ -11,8 +11,8 @@ namespace NwbaApi.Models
 {
     public enum LockFlag
     {
-        Unlock = 0,
-        Lock = 1
+        NotLocked = 0,
+        Locked = 1
     }
     public class Login
     {

@@ -5,6 +5,13 @@
 
 <h1>Customer Details</h1>
 
+@if (null != TempData["alertMessage"])
+{
+    <script type="text/javascript">
+       alert('@TempData["alertMessage"]');
+    </script>
+}
+
 <table class="table">
     <thead>
         <tr>
@@ -17,7 +24,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Tfn)
             </th>
-            
+
             <th></th>
         </tr>
     </thead>

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<BillPay>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Payment Details</h1>
+
+@if(null != TempData["alertMessage"])
+   {
+<script type="text/javascript">
+       alert('@TempData["alertMessage"]');
+</script>
+   }
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BillPayID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScheduleDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Period)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BillPayStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BillPayID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ScheduleDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Period)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BillPayStatus)
+                </td>
+                <td>
+                    <a asp-action="Block" asp-route-id="@item.BillPayID">Block</a>|
+                    <a asp-action="Unblock" asp-route-id="@item.BillPayID">Unblock</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
