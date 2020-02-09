@@ -1,17 +1,20 @@
-﻿using NwbaApi.Data;
-using NwbaApi.Models.Repository;
-using System;
+﻿///-----------------------------------------------------------------
+///   Raji Rudhrakumar                    
+///   Assignment-3 NWBA Web Application
+///   Summer Semester 2020
+///-----------------------------------------------------------------
+
+using NwbaApi.Data;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace NwbaApi.Models.DataManager
+namespace NwbaApi.Models
 {
-    public class LoginManager : IDataRepository<Login, string>
+    public class LoginRepository : IDataRepository<Login, string>
     {
         private readonly NwbaContext _context;
 
-        public LoginManager(NwbaContext context)
+        public LoginRepository(NwbaContext context)
         {
             _context = context;
         }

@@ -1,23 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-
-
-using Microsoft.AspNetCore.Authentication.Cookies;
-
-using Microsoft.AspNetCore.Http;
 using NwbaApi.Data;
-using NwbaApi.Models.DataManager;
-using System.Text.Json;
+using NwbaApi.Models;
 
 namespace NwbaApi
 {
@@ -41,12 +29,13 @@ namespace NwbaApi
             services.AddDbContext<NwbaContext>(options =>
               options.UseSqlServer(Configuration.GetConnectionString("NwbaContext")));
 
-            services.AddTransient<CustomerManager>();
-            services.AddTransient<AddressManager>();
-            services.AddTransient<BillPayManager>();
-            services.AddTransient<LoginManager>();
-            services.AddTransient<TransactionManager>();
-            services.AddTransient<AccountManager>();
+            services.AddTransient<CustomerRepository>();
+            services.AddTransient<AddressRepository>();
+            services.AddTransient<BillPayRepository>();
+            services.AddTransient<LoginRepository>();
+            services.AddTransient<TransactionRepository>();
+            services.AddTransient<AccountRepository>();
+
             services.AddControllers();
         }
 

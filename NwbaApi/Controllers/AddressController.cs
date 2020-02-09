@@ -1,6 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿///-----------------------------------------------------------------
+///   Raji Rudhrakumar                    
+///   Assignment-3 NWBA Web Application
+///   Summer Semester 2020
+///-----------------------------------------------------------------
+
+using Microsoft.AspNetCore.Mvc;
 using NwbaApi.Models;
-using NwbaApi.Models.DataManager;
 using System.Collections.Generic;
 
 namespace NwbaApi.Controllers
@@ -9,10 +14,10 @@ namespace NwbaApi.Controllers
     [Route("api/[controller]")]
     public class AddressController : Controller
     {
-        private readonly AddressManager _repo;
+        private readonly AddressRepository _repo;
 
 
-        public AddressController(AddressManager repo)
+        public AddressController(AddressRepository repo)
         {
             _repo = repo;
         }

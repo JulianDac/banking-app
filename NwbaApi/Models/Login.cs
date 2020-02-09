@@ -1,8 +1,7 @@
 ﻿///-----------------------------------------------------------------
 ///   Raji Rudhrakumar                    
-///   Assignment-2 NWBA Web Application
+///   Assignment-3 NWBA Web Application
 ///   Summer Semester 2020
-///   Adapted from Tute lab and modified to suit the requirement
 ///-----------------------------------------------------------------
 
 using System;
@@ -24,9 +23,7 @@ namespace NwbaApi.Models
         public virtual Customer Customer { get; set; }
         [Required, StringLength(64)]
         public string PasswordHash { get; set; }
-
         public int FailedAttempts { get; set; }
-
         public LockFlag LockFlag { get; set; } 
         public DateTime ModifyDate { get; set; }
     }

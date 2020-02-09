@@ -1,8 +1,7 @@
 ﻿///-----------------------------------------------------------------
 ///   Raji Rudhrakumar                    
-///   Assignment-2 NWBA Web Application
+///   Assignment-3 NWBA Web Application
 ///   Summer Semester 2020
-///   Adapted from Tute lab and modified to suit the requirement
 ///-----------------------------------------------------------------
 
 
@@ -27,11 +26,9 @@ namespace NwbaApi.Models
         [Display(Name = "Type")]
         public AccountType AccountType { get; set; }
         public int CustomerID { get; set; }
-        public virtual Customer Customer { get; set; }
         [Column(TypeName = "money")]
         [DataType(DataType.Currency)]
         public decimal Balance { get; set; }
         public DateTime ModifyDate { get; set; }
-        public virtual List<Transaction> Transactions { get; set; }
     }
 }

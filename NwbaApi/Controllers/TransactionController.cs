@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿///-----------------------------------------------------------------
+///   Raji Rudhrakumar                    
+///   Assignment-3 NWBA Web Application
+///   Summer Semester 2020
+///-----------------------------------------------------------------
+
+using Microsoft.AspNetCore.Mvc;
 using NwbaApi.Models;
-using NwbaApi.Models.DataManager;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace NwbaApi.Controllers
 {
@@ -12,9 +14,9 @@ namespace NwbaApi.Controllers
     [Route("api/transactions")]
     public class TransactionController : Controller
     {
-        private readonly TransactionManager _repo;
+        private readonly TransactionRepository _repo;
 
-        public TransactionController(TransactionManager repo)
+        public TransactionController(TransactionRepository repo)
         {
             _repo = repo;
         }

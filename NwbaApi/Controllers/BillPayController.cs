@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿///-----------------------------------------------------------------
+///   Raji Rudhrakumar                    
+///   Assignment-3 NWBA Web Application
+///   Summer Semester 2020
+///-----------------------------------------------------------------
+
+using Microsoft.AspNetCore.Mvc;
 using NwbaApi.Models;
-using NwbaApi.Models.DataManager;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace NwbaApi.Controllers
 {
@@ -12,8 +14,8 @@ namespace NwbaApi.Controllers
     [Route("api/billpayments")]
     public class BillPayController : Controller
     {
-        private readonly BillPayManager _repo;
-        public BillPayController(BillPayManager repo)
+        private readonly BillPayRepository _repo;
+        public BillPayController(BillPayRepository repo)
         {
             _repo = repo;
         }

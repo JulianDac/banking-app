@@ -1,6 +1,6 @@
 ﻿///-----------------------------------------------------------------
 ///   Raji Rudhrakumar                    
-///   Assignment-2 NWBA Web Application
+///   Assignment-3 NWBA Web Application
 ///   Summer Semester 2020
 ///-----------------------------------------------------------------
 
@@ -14,12 +14,9 @@ namespace NwbaApi.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int PayeeID { get; set; }
-
         [Required, StringLength(50)]
         public string Name { get; set; }
-
         public int AddressID { get; set; }
-
         public virtual List<Account> Accounts { get; set; }
     }
 }
