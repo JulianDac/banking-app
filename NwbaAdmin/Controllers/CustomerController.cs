@@ -126,13 +126,17 @@ namespace NwbaAdmin.Controllers
                     var response = NwbaApi.InitializeClient().PutAsync($"api/customers/{id}", content).Result;
 
                     if (response.IsSuccessStatusCode)
+                    {
+                        TempData["alertMessage"] = "Successfully modified";
                         return RedirectToAction("Index");
+                    }
 
                 }
                 catch (Exception e)
                 {
                     var error = e.Message;
-                    //todo:
+                    TempData["alertMessage"] = "Not Updated";
+                    return RedirectToAction("Index");
                 }
             }
 
@@ -165,13 +169,16 @@ namespace NwbaAdmin.Controllers
             var response = NwbaApi.InitializeClient().DeleteAsync($"api/customers/{id}").Result;
 
             if (response.IsSuccessStatusCode)
+            {
+                TempData["alertMessage"] = "Successfully Deteted";
                 return RedirectToAction("Index");
-
+            }
+            
             return NotFound();
         }
 
-       // [HttpPost]
-        public async Task<IActionResult> Lock(int id)
+       
+        public IActionResult Lock(int id)
         {
             if (id < 0)
                 return NotFound();
@@ -184,17 +191,21 @@ namespace NwbaAdmin.Controllers
                 var response = NwbaApi.InitializeClient().PutAsync($"api/customers/{id}/lock", content).Result;
 
                 if (response.IsSuccessStatusCode)
+                {
+                    TempData["alertMessage"] = "Successfully Locked";
                     return RedirectToAction("Index");
-
+                }
             }
             catch (Exception e)
             {
                 var error = e.Message;
+                TempData["alertMessage"] = "Already Locked";
+                return RedirectToAction("Index");
             }
             return RedirectToAction("Index");
         }
-        // [HttpPost]
-        public async Task<IActionResult> Unlock(int id)
+
+        public IActionResult Unlock(int id)
         {
             if (id < 0)
                 return NotFound();
@@ -206,13 +217,22 @@ namespace NwbaAdmin.Controllers
             {
                 var response = NwbaApi.InitializeClient().PutAsync($"api/customers/{id}/unlock", content).Result;
 
+               
                 if (response.IsSuccessStatusCode)
+                {
+                    TempData["alertMessage"] = "Successfully Unlocked";
                     return RedirectToAction("Index");
-
+                }
+                else if (!response.IsSuccessStatusCode)
+                {
+                    TempData["alertMessage"] = "Already Unlocked";
+                    return RedirectToAction("Index");
+                }
             }
             catch (Exception e)
             {
                 var error = e.Message;
+                TempData["alertMessage"] = "Already Unlocked";
             }
             return RedirectToAction("Index");
         }

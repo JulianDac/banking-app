@@ -6,7 +6,7 @@ namespace NwbaAdmin.Web.Helper
 {
     public class NwbaApi
     {
-        private const string ApiBaseUri = "http://localhost:49805"; 
+        private const string ApiBaseUri = "http://localhost:5000"; 
 
         public static HttpClient InitializeClient()
         {

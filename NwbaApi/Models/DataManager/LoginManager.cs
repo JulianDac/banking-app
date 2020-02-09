@@ -35,7 +35,7 @@ namespace NwbaApi.Models.DataManager
             }
             else
             {
-                login.LockFlag = LockFlag.Lock;
+                login.LockFlag = LockFlag.Locked;
                 _context.SaveChanges();
                 return true;
             } 
@@ -50,7 +50,7 @@ namespace NwbaApi.Models.DataManager
             }
             else
             {
-                login.LockFlag = LockFlag.Unlock;
+                login.LockFlag = LockFlag.NotLocked;
                 _context.SaveChanges();
                 return true;
             }
