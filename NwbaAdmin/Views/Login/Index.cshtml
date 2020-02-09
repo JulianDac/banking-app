@@ -11,19 +11,16 @@
         </div><!-- /.logo -->
         <div class="controls">
             <div class="row">
-                <div class="col-md-4">
-                    @*<input type="text" name="username" placeholder="Username" class="form-control" />
-                <input type="text" name="username" placeholder="Password" class="form-control" />
-                <button type="button" class="btn btn-default btn-block btn-custom">Login</button>*@
+                <div class="col-md">
                     <form asp-action="Login">
                         <div class="form-group">
-                            <label for="login" class="control-label"></label>
-                            <input id="login" name="loginID" type="text" class="form-control" value="admin" />
+                            <label for="login" class="control-label">Login ID</label>
+                            <input id="login" name="loginID" type="text" class="form-control form-control-lg" value="admin" />
                             <span  class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label for="Password" class="control-label">Password</label>
-                            <input id="Password" name="Password" type="password" class="form-control" value="admin" />
+                            <input id="Password" name="Password" type="password" class="form-control form-control-lg" value="admin" />
                             @Html.ValidationMessage("Password", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
@@ -179,20 +176,25 @@ body, html {
 	transform: translateX(-50%);
 	width: 350px;
 	margin: 0 auto;
-	border: 1px solid black;
-	background: #dbd5d2;
+	border: 4px solid #30c2f7;
+    border-style: outset;
+	background: #fcfcfc;
 	min-height: 250px;
 	padding: 20px;
 	z-index: 9999;
 }
+.img-circle {
+    border-radius: 10%!important;
+}
+
 #login-box .logo .logo-caption {
 	font-family: 'Poiret One', cursive;
-	color: white;
+	color: #626060;
 	text-align: center;
 	margin-bottom: 0px;
 }
 #login-box .logo .tweak {
-	color: #ff5252;
+	color: #30c2f7;
 }
 #login-box .controls {
 	padding-top: 30px;
@@ -219,7 +221,7 @@ body, html {
 	border-radius: 2px;
 	margin-top: 8px;
 	background:#ff5252;
-	border-color: rgba(48, 46, 45, 1);
+	border-color: #626060;
 	color: white;
 	font-family: 'Nunito', sans-serif;
 }

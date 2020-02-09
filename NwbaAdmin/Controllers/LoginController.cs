@@ -19,8 +19,8 @@ namespace NwbaAdmin.Controllers
         public IActionResult Login(string loginID, string password)
         {
             if (loginID == "admin" && password == "admin")
-            {
-             
+            {  
+                HttpContext.Session.SetString("name", "Admin");
                 return RedirectToAction("Index", "Customer"); //once logged in, go to Index page of Home 
             }
 
@@ -28,6 +28,15 @@ namespace NwbaAdmin.Controllers
             return View();
         }
 
+
+        [Route("LogoutNow")]
+        public IActionResult Logout()
+        {
+            // Logout customer.
+            HttpContext.Session.Clear();
+
+            return RedirectToAction("Index", "Login");
+        }
 
     }
 }
