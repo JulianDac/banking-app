@@ -33,7 +33,7 @@ namespace NwbaApi.Data
                 Street = "3 Eugenia Street",
                 City = "Doveton",
                 State = "Vic",
-                PostCode = 3177,
+                PostCode = "3177",
                 Phone = "(61)-12340678"
             },
             new Address
@@ -42,7 +42,7 @@ namespace NwbaApi.Data
                 Street = "30 McDownald Ave",
                 City = "Clyton",
                 State = "QLD",
-                PostCode = 3172,
+                PostCode = "3172",
                 Phone = "(61)-04877954"
             },
             new Address
@@ -51,7 +51,7 @@ namespace NwbaApi.Data
                 Street = "123 Fake Street",
                 City = "Melbourne",
                 State = "VIC",
-                PostCode = 3000,
+                PostCode = "3000",
                 Phone = "(61)-03676983"
             },
             new Address
@@ -60,7 +60,7 @@ namespace NwbaApi.Data
                 Street = "12 Dream Ave",
                 City = "Melbourne",
                 State = "WA",
-                PostCode = 3002,
+                PostCode = "3002",
                 Phone = "(61)-034598743"
             },
             new Address
@@ -69,7 +69,7 @@ namespace NwbaApi.Data
                 Street = "32 poka Close",
                 City = "Melbourne",
                 State = "NSW",
-                PostCode = 3007,
+                PostCode = "3007",
                 Phone = "(61)-45693487"
             },
             new Address
@@ -78,7 +78,7 @@ namespace NwbaApi.Data
                 Street = "Unit2 Mac Road",
                 City = "Melbourne",
                 State = "TAS",
-                PostCode = 3006,
+                PostCode = "3006",
                 Phone = "(61)-45692383"
             });
 
@@ -134,6 +134,7 @@ namespace NwbaApi.Data
                 PasswordHash = "YBNbEL4Lk8yMEWxiKkGBeoILHTU7WZ9n8jJSy8TNx0DAzNEFVsIVNRktiQV+I8d2",
                 LockFlag = LockFlag.Unlock,
                 FailedAttempts = 0,
+                LockTime = null,
                 ModifyDate = DateTime.ParseExact("20/01/2020 09:00:00 PM", format, null)
             },
             new Login
@@ -143,6 +144,7 @@ namespace NwbaApi.Data
                 PasswordHash = "EehwB3qMkWImf/fQPlhcka6pBMZBLlPWyiDW6NLkAh4ZFu2KNDQKONxElNsg7V04",
                 LockFlag = LockFlag.Unlock,
                 FailedAttempts = 0,
+                LockTime = null,
                 ModifyDate = DateTime.ParseExact("20/01/2020 09:00:00 PM", format, null)
             },
             new Login
@@ -152,6 +154,7 @@ namespace NwbaApi.Data
                 PasswordHash = "LuiVJWbY4A3y1SilhMU5P00K54cGEvClx5Y+xWHq7VpyIUe5fe7m+WeI0iwid7GE",
                 LockFlag = LockFlag.Unlock,
                 FailedAttempts = 0,
+                LockTime = null,
                 ModifyDate = DateTime.ParseExact("20/01/2020 09:30:00 PM", format, null)
             });
 

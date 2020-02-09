@@ -35,7 +35,7 @@ namespace NwbaApi.Controllers
         [ValidateModel]
         public IActionResult Get()
         {
-            var customers = _repo.GetAll();
+            var customers = _repo.GetAll(); 
 
             if (customers.Count() != 0)
             {
@@ -77,7 +77,6 @@ namespace NwbaApi.Controllers
         [Route("{id}")] // This route is used to check from url
         [HttpPut]
         [ValidateModel]
-       
         public IActionResult Put(int id, Customer customer)
         {
             if (customer == null)

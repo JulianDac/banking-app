@@ -24,7 +24,8 @@ namespace NwbaApi.Models
         [Required, StringLength(64)]
         public string PasswordHash { get; set; }
         public int FailedAttempts { get; set; }
-        public LockFlag LockFlag { get; set; } 
+        public LockFlag LockFlag { get; set; }
+        public DateTime? LockTime { get; set; }
         public DateTime ModifyDate { get; set; }
     }
 }
