@@ -85,7 +85,7 @@ namespace NwbaSystem
             });
 
             app.UseStatusCodePages(
-    "text/html", "<html><h1>are you lost son?</h1></html>");
+                "text/html", "<html><h1>are you lost son?</h1></html>");
         }
         
         
