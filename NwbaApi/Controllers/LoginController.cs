@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿///-----------------------------------------------------------------
+///   Raji Rudhrakumar                    
+///   Assignment-3 NWBA Web Application
+///   Summer Semester 2020
+///-----------------------------------------------------------------
+
+using Microsoft.AspNetCore.Mvc;
 using NwbaApi.Models;
-using NwbaApi.Models.DataManager;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace NwbaApi.Controllers
 {
@@ -12,10 +14,10 @@ namespace NwbaApi.Controllers
     [Route("api/[controller]")]
     public class LoginController : Controller
     {
-        private readonly LoginManager _repo;
+        private readonly LoginRepository _repo;
 
 
-        public LoginController(LoginManager repo)
+        public LoginController(LoginRepository repo)
         {
             _repo = repo;
         }

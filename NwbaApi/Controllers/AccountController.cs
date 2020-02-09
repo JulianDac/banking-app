@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿///-----------------------------------------------------------------
+///   Raji Rudhrakumar                    
+///   Assignment-3 NWBA Web Application
+///   Summer Semester 2020
+///-----------------------------------------------------------------
+
+using Microsoft.AspNetCore.Mvc;
 using NwbaApi.Models;
-using NwbaApi.Models.DataManager;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace NwbaApi.Controllers
 {
@@ -12,10 +15,10 @@ namespace NwbaApi.Controllers
     [Route("api/accounts")]
     public class AccountController : Controller
     {
-        private readonly AccountManager _repo;
-        private readonly TransactionManager _transactionManager;
+        private readonly AccountRepository _repo;
+        private readonly TransactionRepository _transactionManager;
 
-        public AccountController(AccountManager repo, TransactionManager transactionManager)
+        public AccountController(AccountRepository repo, TransactionRepository transactionManager)
         {
             _repo = repo;
             _transactionManager = transactionManager;
@@ -37,7 +40,7 @@ namespace NwbaApi.Controllers
             return _repo.Get(id);
         }
 
-        // Returns transaction details by passing account number and filtered by date's
+        // Returns transaction details by passing account number and filtered by date
         // GET api/transaction/1
         [Route("{id}/transactions")]
         [HttpGet]

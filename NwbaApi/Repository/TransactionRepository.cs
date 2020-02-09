@@ -1,17 +1,21 @@
-﻿using NwbaApi.Data;
-using NwbaApi.Models.Repository;
+﻿///-----------------------------------------------------------------
+///   Raji Rudhrakumar                    
+///   Assignment-3 NWBA Web Application
+///   Summer Semester 2020
+///-----------------------------------------------------------------
+
+using NwbaApi.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace NwbaApi.Models.DataManager
+namespace NwbaApi.Models
 {
-    public class TransactionManager : IDataRepository<Transaction, int>
+    public class TransactionRepository : IDataRepository<Transaction, int>
     {
         private readonly NwbaContext _context;
 
-        public TransactionManager(NwbaContext context)
+        public TransactionRepository(NwbaContext context)
         {
             _context = context;
         }
@@ -33,37 +37,21 @@ namespace NwbaApi.Models.DataManager
             if (from.HasValue && to.HasValue)
             {
                 var transactions = _context.Transactions.Where(x => accountNumbers.Contains(x.AccountNumber) && (x.TransactionTimeUtc.Date >= from.Value.Date && x.TransactionTimeUtc.Date <= to.Value.Date)).ToList();
-                foreach (var tran in transactions)
-                {
-                    tran.Account = null;
-                }
                 return transactions;
             }
             else if (from.HasValue && !to.HasValue)
             {
                 var transactions = _context.Transactions.Where(x => accountNumbers.Contains(x.AccountNumber) && (x.TransactionTimeUtc.Date >= from.Value.Date )).ToList();
-                foreach (var tran in transactions)
-                {
-                    tran.Account = null;
-                }
                 return transactions;
             }
             else if (!from.HasValue && to.HasValue)
             {
                 var transactions = _context.Transactions.Where(x => accountNumbers.Contains(x.AccountNumber) && (x.TransactionTimeUtc.Date <= to.Value.Date)).ToList();
-                foreach (var tran in transactions)
-                {
-                    tran.Account = null;
-                }
                 return transactions;
             }
             else
             {
                 var transactions = _context.Transactions.Where(x => accountNumbers.Contains(x.AccountNumber) ).ToList();
-                foreach (var tran in transactions)
-                {
-                    tran.Account = null;
-                }
                 return transactions;
             }
         }
@@ -72,7 +60,6 @@ namespace NwbaApi.Models.DataManager
         {
             _context.Transactions.Add(transaction);
             _context.SaveChanges();
-
             return transaction.TransactionID;
         }
 
@@ -80,7 +67,6 @@ namespace NwbaApi.Models.DataManager
         {
             _context.Update(transaction);
             _context.SaveChanges();
-
             return id;
         }
 
@@ -88,7 +74,6 @@ namespace NwbaApi.Models.DataManager
         {
             _context.Transactions.Remove(_context.Transactions.Find(id));
             _context.SaveChanges();
-
             return id;
         }
     }

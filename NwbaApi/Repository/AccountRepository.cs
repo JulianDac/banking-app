@@ -1,17 +1,20 @@
-﻿using NwbaApi.Data;
-using NwbaApi.Models.Repository;
-using System;
+﻿///-----------------------------------------------------------------
+///   Raji Rudhrakumar                    
+///   Assignment-3 NWBA Web Application
+///   Summer Semester 2020
+///-----------------------------------------------------------------
+
+using NwbaApi.Data;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace NwbaApi.Models.DataManager
+namespace NwbaApi.Models
 {
-    public class AccountManager : IDataRepository<Account, int>
+    public class AccountRepository : IDataRepository<Account, int>
     {
         private readonly NwbaContext _context;
 
-        public AccountManager(NwbaContext context)
+        public AccountRepository(NwbaContext context)
         {
             _context = context;
         }
@@ -49,8 +52,5 @@ namespace NwbaApi.Models.DataManager
 
             return id;
         }
-
-
-
     }
 }

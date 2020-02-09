@@ -1,6 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿///-----------------------------------------------------------------
+///   Raji Rudhrakumar                    
+///   Assignment-3 NWBA Web Application
+///   Summer Semester 2020
+///-----------------------------------------------------------------
+
+using Microsoft.AspNetCore.Mvc;
 using NwbaApi.Models;
-using NwbaApi.Models.DataManager;
 using System;
 using System.Linq;
 
@@ -10,22 +15,22 @@ namespace NwbaApi.Controllers
     [Route("api/customers")]
     public class CustomerController : Controller
     {
-        private readonly CustomerManager _repo;
+        private readonly CustomerRepository _repo;
 
-        private readonly TransactionManager _transactionManager;
+        private readonly TransactionRepository _transactionManager;
 
-        public CustomerController(CustomerManager repo, TransactionManager transactionManager)
+        public CustomerController(CustomerRepository repo, TransactionRepository transactionManager)
         {
             _repo = repo;
             _transactionManager = transactionManager;
         }
 
-
         #region customer 
-        
+
         // This api call returns the list of all customers. Address and Account details are not included.
         // call this api to view all the customers from the admin portal after the admin logged.
         // GET: api/customer
+         
         [HttpGet]
         [ValidateModel]
         public IActionResult Get()
@@ -192,8 +197,6 @@ namespace NwbaApi.Controllers
             if (customer != null)
             {
                 var accounts = _repo.GetAccounts(id);
-                //customer.Address = address;
-
                 if(accounts != null)
                 {
                     var accountnumbers = accounts.Select(x => x.AccountNumber).ToList();

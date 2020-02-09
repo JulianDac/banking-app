@@ -1,22 +1,26 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿///-----------------------------------------------------------------
+///   Raji Rudhrakumar                    
+///   Assignment-3 NWBA Web Application
+///   Summer Semester 2020
+///-----------------------------------------------------------------
+
+using Microsoft.EntityFrameworkCore;
 using NwbaApi.Data;
-using NwbaApi.Models.Repository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace NwbaApi.Models.DataManager
+namespace NwbaApi.Models
 {
-    public class CustomerManager : IDataRepository<Customer, int>
+    public class CustomerRepository : IDataRepository<Customer, int>
     {
         private readonly NwbaContext _context;
 
-        public CustomerManager(NwbaContext context)
+        public CustomerRepository(NwbaContext context)
         {
             _context = context;
         }
 
+        
         public Customer Get(int id)
         {
             return _context.Customers.Find(id);
@@ -26,7 +30,6 @@ namespace NwbaApi.Models.DataManager
         public Address GetAddress(int id)
         {
             var customer = _context.Customers.Include(x => x.Address).FirstOrDefault(x => x.CustomerID == id);
-            customer.Address.Customers = null; // To eliminate possible object cycle error
             return customer.Address;
         }
 
@@ -35,10 +38,6 @@ namespace NwbaApi.Models.DataManager
         {
             var customer = _context.Customers.Include(x => x.Accounts).FirstOrDefault(x => x.CustomerID == id);
             var accounts = customer.Accounts;
-            foreach (var acc in accounts)
-            {
-                acc.Customer = null;
-            }
             return accounts;
         }
 
@@ -107,7 +106,7 @@ namespace NwbaApi.Models.DataManager
             var login = _context.Logins.Include(x => x.Customer).FirstOrDefault(x => x.CustomerID == id);
             if(login != null)
             {
-                LoginManager lg = new LoginManager(_context);
+                LoginRepository lg = new LoginRepository(_context);
                 lg.Lock(login.LoginID);
                 return true;
             }
@@ -126,7 +125,7 @@ namespace NwbaApi.Models.DataManager
             var login = _context.Logins.Include(x => x.Customer).FirstOrDefault(x => x.CustomerID == id);
             if (login != null)
             {
-                LoginManager lg = new LoginManager(_context);
+                LoginRepository lg = new LoginRepository(_context);
                 lg.UnLock(login.LoginID);
                 return true;
             }

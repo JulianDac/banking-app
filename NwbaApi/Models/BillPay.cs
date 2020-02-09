@@ -1,6 +1,6 @@
 ﻿///-----------------------------------------------------------------
 ///   Raji Rudhrakumar                    
-///   Assignment-2 NWBA Web Application
+///   Assignment-3 NWBA Web Application
 ///   Summer Semester 2020
 ///-----------------------------------------------------------------
 
@@ -24,23 +24,15 @@ namespace NwbaApi.Models
         [StringLength(30)]
         public int PayeeID { get; set; }
         public virtual Payee Payee { get; set; }
-
         [Display(Name = "Account Number")]
         public int AccountNumber { get; set; }
-
         [Column(TypeName = "money")]
         [DataType(DataType.Currency)]
         public decimal Amount { get; set; }
-
         public DateTime ScheduleDate { get; set; }
-
         public string Period { get; set; }
-
         public DateTime? ModifyDate { get; set; }
-
         [Display(Name = "BillPay Status")]
         public BillPayStatus BillPayStatus { get; set; }
-
-        public virtual List<Account> Accounts { get; set; }
     }
 }

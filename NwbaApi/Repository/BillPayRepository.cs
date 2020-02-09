@@ -1,17 +1,20 @@
-﻿using NwbaApi.Data;
-using NwbaApi.Models.Repository;
-using System;
+﻿///-----------------------------------------------------------------
+///   Raji Rudhrakumar                    
+///   Assignment-3 NWBA Web Application
+///   Summer Semester 2020
+///-----------------------------------------------------------------
+
+using NwbaApi.Data;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace NwbaApi.Models.DataManager
+namespace NwbaApi.Models
 {
-    public class BillPayManager : IDataRepository<BillPay, int>
+    public class BillPayRepository : IDataRepository<BillPay, int>
     {
         private readonly NwbaContext _context;
 
-        public BillPayManager(NwbaContext context)
+        public BillPayRepository(NwbaContext context)
         {
             _context = context;
         }
