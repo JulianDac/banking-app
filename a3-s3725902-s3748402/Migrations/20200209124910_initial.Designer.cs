@@ -10,8 +10,8 @@ using NwbaSystem.Data;
 namespace NwbaSystem.Migrations
 {
     [DbContext(typeof(NwbaContext))]
-    [Migration("20200209113601_skywalker")]
-    partial class skywalker
+    [Migration("20200209124910_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

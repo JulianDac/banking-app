@@ -131,7 +131,9 @@ namespace NwbaSystem.Data
                     PasswordHash = "YBNbEL4Lk8yMEWxiKkGBeoILHTU7WZ9n8jJSy8TNx0DAzNEFVsIVNRktiQV+I8d2",
                     ModifyDate = DateTime.ParseExact("20/01/2020 09:00:00 PM", format, null),
                     LockTime = null,
-                    FailedAttempts = 0
+                    LockFlag = LockFlag.NotLocked,
+                    FailedAttempts = 0,
+
                 },
                 new Login
                 {
@@ -140,6 +142,7 @@ namespace NwbaSystem.Data
                     PasswordHash = "EehwB3qMkWImf/fQPlhcka6pBMZBLlPWyiDW6NLkAh4ZFu2KNDQKONxElNsg7V04",
                     ModifyDate = DateTime.ParseExact("20/01/2020 09:00:00 PM", format, null),
                     LockTime = null,
+                    LockFlag = LockFlag.NotLocked,
                     FailedAttempts = 0
                 },
                 new Login
@@ -149,6 +152,7 @@ namespace NwbaSystem.Data
                     PasswordHash = "LuiVJWbY4A3y1SilhMU5P00K54cGEvClx5Y+xWHq7VpyIUe5fe7m+WeI0iwid7GE",
                     ModifyDate = DateTime.ParseExact("20/01/2020 09:30:00 PM", format, null),
                     LockTime = null,
+                    LockFlag = LockFlag.NotLocked,
                     FailedAttempts = 0
                 });
 
