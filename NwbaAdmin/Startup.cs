@@ -76,6 +76,11 @@ namespace NwbaAdmin
                     name: "default",
                     pattern: "{controller=Login}/{action=Index}/{id?}");
             });
+
+            app.UseStatusCodePages(
+            "text/html", "<html><h1>are you lost son?</h1></html>");
         }
+
     }
 }
+

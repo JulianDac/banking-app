@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using NwbaApi.Models;
 using System;
 using System.Linq;
+using System.Collections.Generic;
+//using NwbaAdmin.Models;
 
 namespace NwbaApi.Controllers
 {
@@ -202,6 +204,37 @@ namespace NwbaApi.Controllers
 
                   var transactions =  _transactionManager.GetAccountTransactions(accountnumbers,from,to);
                     return Ok(transactions);
+                }
+                return NotFound();
+            }
+            else
+            {
+                ModelState.AddModelError("", "No customers found");
+                return NotFound();
+            }
+        }
+
+        [Route("{id}/transactions/graph1")]
+        [HttpGet]
+        [ValidateModel]
+        public IActionResult GetTransactionsGraphDataOne(int id, DateTime? from, DateTime? to)
+        {
+            var customer = _repo.Get(id);
+            if (customer != null)
+            {
+                var accounts = _repo.GetAccounts(id);
+                if (accounts != null)
+                {
+                    var accountnumbers = accounts.Select(x => x.AccountNumber).ToList();
+
+                    var transactions = _transactionManager.GetAccountTransactions(accountnumbers, from, to);
+
+                    var result = new List<GraphDataOne>();
+                    foreach(var a in transactions)
+                    {
+                        result.Add(new GraphDataOne { TransactionDate = a.TransactionTimeUtc, Amount = a.Amount });
+                    }
+                    return Ok(result);
                 }
                 return NotFound();
             }

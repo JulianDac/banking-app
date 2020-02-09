@@ -28,7 +28,6 @@ namespace NwbaAdmin.Controllers
             return View();
         }
 
-
         [Route("LogoutNow")]
         public IActionResult Logout()
         {
