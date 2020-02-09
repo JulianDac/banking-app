@@ -21,7 +21,7 @@ namespace NwbaSystem.ViewModels
         public string Street { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public int PostCode { get; set; }
+        public string PostCode { get; set; }
         public string Phone { get; set; }  
         public  Address Address { get; set; }
         public Customer Customer { get; set; }

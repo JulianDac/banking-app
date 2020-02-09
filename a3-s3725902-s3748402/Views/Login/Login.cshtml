@@ -31,6 +31,7 @@
                 <input type="submit" value="Login" class="btn btn-primary" />
             </div>
             @Html.ValidationMessage("LoginFailed", new { @class = "text-danger" })
+            @Html.ValidationMessage("AccountLocked", new { @class = "text-danger" })
         </form>
     </div>
 </div>

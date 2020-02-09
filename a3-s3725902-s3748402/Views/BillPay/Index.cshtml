@@ -85,7 +85,7 @@
                     <td>
                         @{ var billPayStatus = item.BillPayStatus;}
 
-                        @if (billPayStatus == BillPayStatus.ReadyToProcess)
+                        @if (billPayStatus == BillPayStatus.Waiting)
                         {
 
                             <a asp-action="Edit" asp-route-id="@item.BillPayID">Edit</a>

@@ -26,7 +26,7 @@ namespace NwbaSystem.Models
         public string State { get; set; }
 
         [StringLength(4)]
-        public int PostCode { get; set; }
+        public string PostCode { get; set; }
 
         [StringLength(15)]
         public string Phone { get; set; }

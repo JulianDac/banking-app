@@ -20,7 +20,7 @@ namespace NwbaApi.Models
         public string City { get; set; }
         [StringLength(20)]
         public string State { get; set; }
-        public int PostCode { get; set; }
+        public string PostCode { get; set; }
         [StringLength(15)]
         public string Phone { get; set; }
     }

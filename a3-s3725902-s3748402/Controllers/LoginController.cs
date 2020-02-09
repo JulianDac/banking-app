@@ -67,19 +67,38 @@ namespace NwbaSystem.Controllers
         public async Task<IActionResult> Login(string loginID, string password)
         {
             var login = await _context.Logins.FindAsync(loginID);
+            if (login.LockFlag == LockFlag.Locked)
+            {
+                if (login.LockTime > DateTime.UtcNow)
+                {
+                    ModelState.AddModelError("AccountLocked", "Account is currently locked. Please wait 10s.");
+                    return View(new Login { LoginID = loginID });
+                }
+            }
+
             if (login == null || !PBKDF2.Verify(login.PasswordHash, password))
             {
                 ModelState.AddModelError("LoginFailed", "Login failed, please try again.");
+                login.FailedAttempts += 1;
+                if (login.FailedAttempts >= 3)
+                {
+                    login.LockFlag = LockFlag.Locked;
+                    login.LockTime = DateTime.UtcNow.AddSeconds(10);
+                }
+                await _context.SaveChangesAsync();
                 return View(new Login { LoginID = loginID });
             }
-
-            // Login customer.
-            HttpContext.Session.SetInt32(nameof(Customer.CustomerID), login.CustomerID);
-            HttpContext.Session.SetString(nameof(Customer.Name), login.Customer.Name);
-
-
-            //return RedirectToAction("Index", "Account"); 
-            return RedirectToAction("Index", "Customer"); //once logged in, redirect to Controller Customer, action method Index
+            else
+            {
+                login.LockFlag = LockFlag.NotLocked;
+                login.FailedAttempts = 0;
+                await _context.SaveChangesAsync();
+                // Login customer.
+                HttpContext.Session.SetInt32(nameof(Customer.CustomerID), login.CustomerID);
+                HttpContext.Session.SetString(nameof(Customer.Name), login.Customer.Name);
+                //return RedirectToAction("Index", "Account"); 
+                return RedirectToAction("Index", "Customer"); //once logged in, redirect to Controller Customer, action method Index
+            }
         }
         
 

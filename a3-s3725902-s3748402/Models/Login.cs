@@ -12,8 +12,8 @@ namespace NwbaSystem.Models
 {
     public enum LockFlag
     {
-        Unlock = 0,
-        Lock = 1
+        NotLocked = 0,
+        Locked = 1
     }
 
     public class Login
@@ -32,6 +32,8 @@ namespace NwbaSystem.Models
         public int FailedAttempts { get; set; }
 
         public LockFlag LockFlag { get; set; }
+
+        public DateTime? LockTime { get; set; }
 
         public DateTime ModifyDate { get; set; }
     }

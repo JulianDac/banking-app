@@ -1,0 +1,62 @@
+﻿@model Customer
+@{
+    ViewData["Title"] = "Update Customer";
+}
+
+<h1>Update Customer Details</h1>
+
+<h4>Customer</h4>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpdateCustomer">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="CustomerID" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tfn" class="control-label"></label>
+                <input asp-for="Tfn" class="form-control" />
+                <span asp-validation-for="Tfn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address.City" class="control-label"></label>
+                <input asp-for="Address.City" class="form-control" />
+                <span asp-validation-for="Address.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address.Street" class="control-label"></label>
+                <input asp-for="Address.Street" class="form-control" />
+                <span asp-validation-for="Address.Street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address.State" class="control-label"></label>
+                <input asp-for="Address.State" class="form-control" />
+                <span asp-validation-for="Address.State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address.PostCode" class="control-label"></label>
+                <input asp-for="Address.PostCode" class="form-control" />
+                <span asp-validation-for="Address.PostCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address.Phone" class="control-label"></label>
+                <input asp-for="Address.Phone" class="form-control" />
+                <span asp-validation-for="Address.Phone" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" style="padding-bottom: 20px; padding-top: 20px; margin-bottom: 20px">
+                <input type="submit" value="Execute" class="btn btn-primary" />
+                <input type="reset" value="Cancel" class="btn btn-warning" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
